@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://db2aida1r8pgn"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship_repair.gd" id="1_rca8l"]
+[ext_resource type="Texture2D" uid="uid://by1fbwos2d823" path="res://assets/sprites/spaceships/repair.png" id="2_j0plu"]
+[ext_resource type="AudioStream" uid="uid://dnyehydiihvbp" path="res://assets/audio/effects/repairpickup.wav" id="3_20cv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iavf"]
+size = Vector2(8, 12)
+
+[sub_resource type="Curve" id="Curve_nhquj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SpaceshipRepair" type="Node2D"]
+z_index = 9
+script = ExtResource("1_rca8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j0plu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_5iavf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="PickUpParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_nhquj")
+color = Color(0.924059, 0.00113223, 0.984633, 1)
+
+[node name="PickupSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_20cv2")
+volume_db = 4.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

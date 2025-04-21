@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://co2nn3jcvxqw4"]
+
+[ext_resource type="Texture2D" uid="uid://b8qss7gurflmg" path="res://assets/sprites/spaceships/spaceshipscraps.png" id="1_gqyom"]
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship_scraps.gd" id="1_hchn1"]
+
+[node name="SpaceshipScraps" type="Node2D"]
+script = ExtResource("1_hchn1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+texture = ExtResource("1_gqyom")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

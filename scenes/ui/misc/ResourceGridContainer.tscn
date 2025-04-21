@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx3saw32fyv5t"]
+
+[ext_resource type="Script" path="res://scripts/ui/resource_grid_container.gd" id="1_gcabr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw8tl"]
+bg_color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="ResourceGridContainer" type="GridContainer"]
+theme_override_constants/h_separation = 10
+columns = 2
+script = ExtResource("1_gcabr")
+
+[node name="ResourceLabel1" type="Label" parent="."]
+z_index = 101
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+text = "<resource1>"
+vertical_alignment = 1
+
+[node name="ResourceBar1" type="ProgressBar" parent="."]
+z_index = 101
+texture_filter = 1
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_rw8tl")
+step = 1.0
+
+[node name="ResourceLabel2" type="Label" parent="."]
+z_index = 101
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+text = "<resource2>"
+vertical_alignment = 1
+
+[node name="ResourceBar2" type="ProgressBar" parent="."]
+z_index = 101
+texture_filter = 1
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_rw8tl")
+step = 1.0

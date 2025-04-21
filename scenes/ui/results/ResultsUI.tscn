@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxemnof6fcxas"]
+
+[ext_resource type="Script" path="res://scripts/ui/results_ui.gd" id="1_g5ayg"]
+[ext_resource type="PackedScene" uid="uid://cnxhm7i3ry25p" path="res://scenes/ui/buttons/MenuButton.tscn" id="2_53kvx"]
+
+[node name="ResultsUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g5ayg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.0316395, 4.84917e-06, 0.1999, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Congratulations! You have escaped the galaxy!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResultsTitleLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Results"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Column" type="VBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+
+[node name="MonthsPassedLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.529067, 0.529067, 0.529067, 1)
+theme_override_font_sizes/font_size = 8
+text = "Months passed: X"
+
+[node name="TotalMoneyGainedLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.529067, 0.529067, 0.529067, 1)
+theme_override_font_sizes/font_size = 8
+text = "Total Money Gained: X"
+
+[node name="PlanetsOwnedLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.529067, 0.529067, 0.529067, 1)
+theme_override_font_sizes/font_size = 8
+text = "Planets Owned: X"
+
+[node name="UpgradesUnlockedLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/VBoxContainer/Column"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.529067, 0.529067, 0.529067, 1)
+theme_override_font_sizes/font_size = 8
+text = "Upgrades Unlocked: X"
+
+[node name="MenuButton" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_53kvx")]
+layout_mode = 2
+size_flags_horizontal = 4
+label_text = "Continue"
+
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

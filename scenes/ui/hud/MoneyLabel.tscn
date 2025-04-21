@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://m7m4mnmcyxse"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud/money_label.gd" id="1_8mx71"]
+
+[node name="MoneyLabel" type="Label"]
+theme_override_colors/font_color = Color(0, 0.701961, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "$0"
+script = ExtResource("1_8mx71")

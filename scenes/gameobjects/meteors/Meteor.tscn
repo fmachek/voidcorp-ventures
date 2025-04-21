@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjr2wrruivm7x"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/meteors/meteor.gd" id="1_jgsvn"]
+[ext_resource type="Texture2D" uid="uid://c6sxwhhw3yix1" path="res://assets/sprites/meteors/meteor.png" id="2_rtihh"]
+[ext_resource type="Texture2D" uid="uid://ddhabcq2cq2nc" path="res://assets/particles/meteorparticle.png" id="5_gj3py"]
+[ext_resource type="AudioStream" uid="uid://dmmpx2oppfyj4" path="res://assets/audio/effects/explosion.wav" id="8_qb41b"]
+[ext_resource type="Texture2D" uid="uid://bnv471socppli" path="res://assets/particles/explosionparticle.png" id="9_7j73o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7no00"]
+radius = 6.0
+
+[sub_resource type="Curve" id="Curve_bisvk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_e8rud"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.050505, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Meteor" type="Node2D"]
+z_index = 7
+z_as_relative = false
+script = ExtResource("1_jgsvn")
+
+[node name="MeteorBody" type="Sprite2D" parent="."]
+texture = ExtResource("2_rtihh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7no00")
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+
+[node name="ExplosionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qb41b")
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+texture = ExtResource("9_7j73o")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_bisvk")
+
+[node name="MeteorParticles" type="CPUParticles2D" parent="."]
+amount = 50
+lifetime = 4.0
+texture = ExtResource("5_gj3py")
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.25
+scale_amount_curve = SubResource("Curve_e8rud")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]

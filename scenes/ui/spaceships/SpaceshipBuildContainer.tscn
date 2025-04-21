@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://druowug6eaq3a"]
+
+[ext_resource type="Texture2D" uid="uid://dm1230dc170fn" path="res://assets/sprites/spaceships/spaceship.png" id="1_166ab"]
+[ext_resource type="PackedScene" uid="uid://b8ji4mr6uh2rt" path="res://scenes/ui/buttons/MineBuildButton.tscn" id="2_87cnk"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/spaceship_build_button.gd" id="3_tcibj"]
+
+[node name="SpaceshipBuildContainer" type="HBoxContainer"]
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 18)
+layout_mode = 2
+texture = ExtResource("1_166ab")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Spaceship"
+
+[node name="CostLabel" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.737255, 0.737255, 0.737255, 1)
+theme_override_font_sizes/font_size = 4
+text = "$1000,
+10 Atomsteel"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpaceshipBuildButton" parent="MarginContainer" instance=ExtResource("2_87cnk")]
+custom_minimum_size = Vector2(70, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("3_tcibj")

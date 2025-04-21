@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://vq6x1f5q55bu"]
+
+[ext_resource type="Script" path="res://scripts/ui/buttons/factory_build_button.gd" id="1_jlswh"]
+[ext_resource type="Texture2D" uid="uid://nqpgj3q0p6cc" path="res://assets/ui/buttons/buy/normal/normal.png" id="1_ncl6t"]
+[ext_resource type="Texture2D" uid="uid://wjdnvsdmn74o" path="res://assets/ui/buttons/buy/normal/pressed.png" id="2_jswnc"]
+[ext_resource type="Texture2D" uid="uid://ck6jj623sffdw" path="res://assets/ui/buttons/buy/normal/hover.png" id="3_x55tf"]
+
+[node name="FactoryBuildButton" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(90, 32)
+offset_right = 90.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_ncl6t")
+texture_pressed = ExtResource("2_jswnc")
+texture_hover = ExtResource("3_x55tf")
+script = ExtResource("1_jlswh")
+
+[node name="ButtonLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 6
+text = "Build ($0000)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

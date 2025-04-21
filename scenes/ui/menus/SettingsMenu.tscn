@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://csym5wsfd233l"]
+
+[ext_resource type="StyleBox" uid="uid://cr54sx6hngrn3" path="res://styleboxes/menu/settings_panel.tres" id="1_0646n"]
+[ext_resource type="Script" path="res://scripts/ui/menus/settings_menu.gd" id="1_emid4"]
+[ext_resource type="PackedScene" uid="uid://cnxhm7i3ry25p" path="res://scenes/ui/buttons/MenuButton.tscn" id="1_hbjgl"]
+[ext_resource type="Script" path="res://scripts/ui/settings/show_resource_gains_checkbox.gd" id="4_h6mom"]
+[ext_resource type="Script" path="res://scripts/ui/settings/music_enabled_checkbox.gd" id="4_vamb6"]
+[ext_resource type="Script" path="res://scripts/ui/settings/show_boost_zones_checkbox.gd" id="5_u85l2"]
+
+[node name="SettingsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emid4")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0, 0.145098, 1)
+
+[node name="SettingsMenuContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsMenuContainer"]
+z_index = 5
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MenuContainer" type="VBoxContainer" parent="SettingsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="SettingsLabel" type="Label" parent="SettingsMenuContainer/MarginContainer/MenuContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_0646n")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ButtonContainer" type="VBoxContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="SoundSection" type="VBoxContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/SoundSection"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.762404, 0.762404, 0.762404, 1)
+theme_override_font_sizes/font_size = 12
+text = "Sound"
+
+[node name="MusicEnabledCheckbox" type="CheckBox" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/SoundSection"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+button_pressed = true
+text = "Music Enabled"
+script = ExtResource("4_vamb6")
+
+[node name="UISection" type="VBoxContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/UISection"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.762404, 0.762404, 0.762404, 1)
+theme_override_font_sizes/font_size = 12
+text = "User Interface"
+
+[node name="ShowResourceGainsCheckbox" type="CheckBox" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/UISection"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+button_pressed = true
+text = "Show Resource Gains"
+script = ExtResource("4_h6mom")
+
+[node name="GameplaySection" type="VBoxContainer" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/GameplaySection"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.762404, 0.762404, 0.762404, 1)
+theme_override_font_sizes/font_size = 12
+text = "Gameplay"
+
+[node name="ShowBoostZonesCheckbox" type="CheckBox" parent="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/GameplaySection"]
+texture_filter = 1
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 6
+button_pressed = true
+text = "Show Boost Zones"
+script = ExtResource("5_u85l2")
+
+[node name="MenuButton" parent="SettingsMenuContainer" instance=ExtResource("1_hbjgl")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+label_text = "Back"
+
+[connection signal="pressed" from="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/SoundSection/MusicEnabledCheckbox" to="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/SoundSection/MusicEnabledCheckbox" method="_on_pressed"]
+[connection signal="pressed" from="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/UISection/ShowResourceGainsCheckbox" to="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/UISection/ShowResourceGainsCheckbox" method="_on_pressed"]
+[connection signal="pressed" from="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/GameplaySection/ShowBoostZonesCheckbox" to="SettingsMenuContainer/MarginContainer/MenuContainer/ScrollContainer/MarginContainer/ButtonContainer/GameplaySection/ShowBoostZonesCheckbox" method="_on_pressed"]
+[connection signal="pressed" from="SettingsMenuContainer/MenuButton" to="." method="_on_menu_button_pressed"]

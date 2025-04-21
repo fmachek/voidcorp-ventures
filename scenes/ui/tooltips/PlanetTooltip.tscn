@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://rkhrpjpta51r"]
+
+[ext_resource type="PackedScene" uid="uid://dx3saw32fyv5t" path="res://scenes/ui/misc/ResourceGridContainer.tscn" id="1_bccru"]
+[ext_resource type="Script" path="res://scripts/ui/tooltips/planet_tooltip.gd" id="1_sefaq"]
+
+[node name="PlanetTooltip" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_sefaq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 101
+layout_mode = 1
+offset_right = 204.0
+offset_bottom = 93.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.678431)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+z_index = 101
+layout_mode = 0
+offset_right = 204.0
+offset_bottom = 77.0
+
+[node name="PlanetInfoMarginContainer" type="MarginContainer" parent="ColorRect/GridContainer"]
+z_index = 101
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="PlanetInfoGridContainer" type="GridContainer" parent="ColorRect/GridContainer/PlanetInfoMarginContainer"]
+z_index = 101
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlanetNameLabel" type="Label" parent="ColorRect/GridContainer/PlanetInfoMarginContainer/PlanetInfoGridContainer"]
+z_index = 101
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 8
+text = "<planet_name>"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="ColorRect/GridContainer/PlanetInfoMarginContainer/PlanetInfoGridContainer"]
+z_index = 101
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.605274, 0.605274, 0.605274, 1)
+theme_override_font_sizes/font_size = 6
+text = "Type: <type>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OwnedLabel" type="Label" parent="ColorRect/GridContainer/PlanetInfoMarginContainer/PlanetInfoGridContainer"]
+z_index = 101
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.605274, 0.605274, 0.605274, 1)
+theme_override_font_sizes/font_size = 6
+text = "<not owned / owned>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/GridContainer"]
+z_index = 101
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ResourceGridContainer" parent="ColorRect/GridContainer/MarginContainer" instance=ExtResource("1_bccru")]
+layout_mode = 2

@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://bv7xghecno4bd"]
+
+[ext_resource type="PackedScene" uid="uid://cx4ndlypfcu6e" path="res://scenes/ui/game/GameUI.tscn" id="2_rsrtc"]
+[ext_resource type="Script" path="res://scripts/main_camera.gd" id="3_khdbj"]
+[ext_resource type="Script" path="res://scripts/ui/ui_layer.gd" id="4_5pbhw"]
+[ext_resource type="PackedScene" uid="uid://dvx2alqq478wh" path="res://scenes/ui/upgrades/UpgradeUI.tscn" id="4_bk77m"]
+[ext_resource type="PackedScene" uid="uid://ehayd8qixqmn" path="res://scenes/ui/market/MarketUI.tscn" id="7_fd8hf"]
+[ext_resource type="Texture2D" uid="uid://bqe0v27vngueq" path="res://assets/sprites/background.png" id="8_3xqil"]
+[ext_resource type="PackedScene" uid="uid://jyx53ynrjdkv" path="res://scenes/ui/menus/MainMenu.tscn" id="8_tgvop"]
+[ext_resource type="PackedScene" uid="uid://csym5wsfd233l" path="res://scenes/ui/menus/SettingsMenu.tscn" id="9_rf6kf"]
+[ext_resource type="PackedScene" uid="uid://b3x07cjbctymn" path="res://scenes/ui/tooltips/SpaceshipTooltip.tscn" id="9_so2wl"]
+[ext_resource type="Script" path="res://scripts/soundplayers/soundtrack_player.gd" id="13_317ob"]
+[ext_resource type="AudioStream" uid="uid://d1axen5ll1rg8" path="res://assets/audio/ui/ButtonClick.wav" id="13_hfn75"]
+[ext_resource type="Script" path="res://scripts/gamelogic/time_manager.gd" id="14_4mp6w"]
+[ext_resource type="Script" path="res://scripts/gamelogic/planetary_system_loader.gd" id="16_ac18w"]
+[ext_resource type="Script" path="res://scripts/soundplayers/button_click_player.gd" id="16_ma4k2"]
+
+[node name="Game" type="Node2D"]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_5pbhw")
+
+[node name="GameUI" parent="UILayer" instance=ExtResource("2_rsrtc")]
+z_as_relative = false
+
+[node name="UpgradeUI" parent="UILayer" instance=ExtResource("4_bk77m")]
+visible = false
+top_level = true
+z_as_relative = false
+
+[node name="MarketUI" parent="UILayer" instance=ExtResource("7_fd8hf")]
+visible = false
+z_as_relative = false
+
+[node name="SpaceshipTooltip" parent="UILayer" instance=ExtResource("9_so2wl")]
+visible = false
+
+[node name="MainMenu" parent="UILayer" instance=ExtResource("8_tgvop")]
+visible = false
+z_as_relative = false
+mouse_force_pass_scroll_events = false
+
+[node name="SettingsMenu" parent="UILayer" instance=ExtResource("9_rf6kf")]
+visible = false
+z_index = 3000
+z_as_relative = false
+mouse_force_pass_scroll_events = false
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+script = ExtResource("3_khdbj")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="MainCamera"]
+position = Vector2(-1.90735e-06, 8.9407e-07)
+scale = Vector2(11, 11)
+texture = ExtResource("8_3xqil")
+
+[node name="TimeManager" type="Timer" parent="."]
+script = ExtResource("14_4mp6w")
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("13_317ob")
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_hfn75")
+script = ExtResource("16_ma4k2")
+
+[node name="PlanetarySystemLoader" type="Node" parent="."]
+script = ExtResource("16_ac18w")
+
+[connection signal="finished" from="SoundtrackPlayer" to="SoundtrackPlayer" method="_on_finished"]

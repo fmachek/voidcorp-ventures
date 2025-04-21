@@ -1,0 +1,191 @@
+[gd_scene load_steps=23 format=3 uid="uid://dquc7v5nafedb"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/systems/discoverable_planetary_system.gd" id="1_r08h6"]
+[ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="2_mbw7h"]
+[ext_resource type="Texture2D" uid="uid://dve8hd1x7n1of" path="res://assets/sprites/systems/cloud/cloud1.png" id="3_iw1jf"]
+[ext_resource type="PackedScene" uid="uid://bw0iwyxhorfjc" path="res://scenes/ui/systems/PlanetIndicatorPanel.tscn" id="3_p0teu"]
+[ext_resource type="Texture2D" uid="uid://bw1gdc7o4ovtt" path="res://assets/sprites/systems/cloud/cloud2.png" id="4_s2mgx"]
+[ext_resource type="Texture2D" uid="uid://doa3umehadgfb" path="res://assets/sprites/systems/cloud/cloud3.png" id="5_c42ob"]
+[ext_resource type="Texture2D" uid="uid://cajl5fultkg0i" path="res://assets/sprites/systems/cloud/cloud4.png" id="6_iv12q"]
+[ext_resource type="Texture2D" uid="uid://vfh14ygnoxep" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud1.png" id="7_ihbgg"]
+[ext_resource type="Texture2D" uid="uid://c3guced4mqsyu" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud2.png" id="8_owbg7"]
+[ext_resource type="Texture2D" uid="uid://cd1w7fug30gwf" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud3.png" id="9_1cois"]
+[ext_resource type="Texture2D" uid="uid://ckdnc6xrvd2qt" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud4.png" id="10_8riqw"]
+[ext_resource type="Texture2D" uid="uid://khepwhubhtww" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud5.png" id="11_nu30n"]
+[ext_resource type="Texture2D" uid="uid://cre1opdxdnlfy" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud6.png" id="12_5lfdx"]
+[ext_resource type="Texture2D" uid="uid://bcwtutvs4y25n" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud7.png" id="13_yqrsc"]
+[ext_resource type="Texture2D" uid="uid://dtnk1hnkslfx3" path="res://assets/sprites/systems/disappearingcloud/disappearingcloud8.png" id="14_73ur5"]
+[ext_resource type="PackedScene" uid="uid://beqbst3q6fars" path="res://scenes/gameobjects/meteors/MeteorSpawner.tscn" id="15_vjuhd"]
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship_repair_spawner.gd" id="17_smauv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23w5v"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eda6k"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.290196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wh6e"]
+bg_color = Color(0.108636, 0.452808, 2.88785e-07, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0745e"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": ExtResource("3_iw1jf")
+}, {
+"duration": 10.0,
+"texture": ExtResource("4_s2mgx")
+}, {
+"duration": 10.0,
+"texture": ExtResource("5_c42ob")
+}, {
+"duration": 10.0,
+"texture": ExtResource("6_iv12q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3hwp"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": ExtResource("7_ihbgg")
+}, {
+"duration": 0.8,
+"texture": ExtResource("8_owbg7")
+}, {
+"duration": 0.8,
+"texture": ExtResource("9_1cois")
+}, {
+"duration": 0.8,
+"texture": ExtResource("10_8riqw")
+}, {
+"duration": 0.8,
+"texture": ExtResource("11_nu30n")
+}, {
+"duration": 0.8,
+"texture": ExtResource("12_5lfdx")
+}, {
+"duration": 0.8,
+"texture": ExtResource("13_yqrsc")
+}, {
+"duration": 0.8,
+"texture": ExtResource("14_73ur5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DiscoverablePlanetarySystem" type="Node2D"]
+script = ExtResource("1_r08h6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(500, 500)
+shape = SubResource("RectangleShape2D_23w5v")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eda6k")
+
+[node name="UnlockContainer" type="VBoxContainer" parent="Panel"]
+z_index = 11
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiscoverLabel" type="Label" parent="Panel/UnlockContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Discover ($????)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/UnlockContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 120)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/background = ExtResource("2_mbw7h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2wh6e")
+
+[node name="PlanetIndicatorPanel" parent="Panel" instance=ExtResource("3_p0teu")]
+layout_mode = 1
+
+[node name="Planets" type="Node2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawners" type="Node2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawner1" parent="MeteorSpawners" instance=ExtResource("15_vjuhd")]
+position = Vector2(-500, 500)
+
+[node name="MeteorSpawner2" parent="MeteorSpawners" instance=ExtResource("15_vjuhd")]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawner3" parent="MeteorSpawners" instance=ExtResource("15_vjuhd")]
+position = Vector2(500, -500)
+
+[node name="MeteorSpawner4" parent="MeteorSpawners" instance=ExtResource("15_vjuhd")]
+position = Vector2(-500, -500)
+
+[node name="CloudSprite" type="AnimatedSprite2D" parent="."]
+z_index = 10
+z_as_relative = false
+position = Vector2(500, 500)
+scale = Vector2(30, 30)
+sprite_frames = SubResource("SpriteFrames_0745e")
+
+[node name="DisappearingCloudSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 10
+z_as_relative = false
+position = Vector2(500, 500)
+scale = Vector2(30, 30)
+sprite_frames = SubResource("SpriteFrames_o3hwp")
+
+[node name="DiscoveryTimer" type="Timer" parent="."]
+
+[node name="SpaceshipRepairSpawner" type="Node2D" parent="." node_paths=PackedStringArray("planets_node")]
+script = ExtResource("17_smauv")
+planets_node = NodePath("../Planets")
+
+[node name="Timer" type="Timer" parent="SpaceshipRepairSpawner"]
+wait_time = 30.0
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="DiscoveryTimer" to="." method="_on_discovery_timer_timeout"]
+[connection signal="timeout" from="SpaceshipRepairSpawner/Timer" to="SpaceshipRepairSpawner" method="_on_timer_timeout"]

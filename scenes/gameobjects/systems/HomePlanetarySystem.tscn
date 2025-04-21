@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvns2hf3lirux"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/systems/home_planetary_system.gd" id="1_08usa"]
+[ext_resource type="PackedScene" uid="uid://beqbst3q6fars" path="res://scenes/gameobjects/meteors/MeteorSpawner.tscn" id="2_dtcgx"]
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship_repair_spawner.gd" id="3_0iqt8"]
+[ext_resource type="Texture2D" uid="uid://f7h8bmhy3hc8" path="res://assets/sprites/planets/homeplaneticon.png" id="3_q6rhj"]
+[ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="3_quhin"]
+[ext_resource type="Script" path="res://scripts/misc/home_system_sprite.gd" id="4_0hxbc"]
+[ext_resource type="PackedScene" uid="uid://bw0iwyxhorfjc" path="res://scenes/ui/systems/PlanetIndicatorPanel.tscn" id="4_7rlj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncppo"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vff0v"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.290196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sop5i"]
+bg_color = Color(0.108636, 0.452808, 2.88785e-07, 1)
+
+[node name="HomePlanetarySystem" type="Node2D"]
+script = ExtResource("1_08usa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(500, 500)
+shape = SubResource("RectangleShape2D_ncppo")
+
+[node name="Planets" type="Node2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawners" type="Node2D" parent="."]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawner1" parent="MeteorSpawners" instance=ExtResource("2_dtcgx")]
+position = Vector2(-500, 500)
+
+[node name="MeteorSpawner2" parent="MeteorSpawners" instance=ExtResource("2_dtcgx")]
+position = Vector2(500, 500)
+
+[node name="MeteorSpawner3" parent="MeteorSpawners" instance=ExtResource("2_dtcgx")]
+position = Vector2(500, -500)
+
+[node name="MeteorSpawner4" parent="MeteorSpawners" instance=ExtResource("2_dtcgx")]
+position = Vector2(-500, -500)
+
+[node name="SpaceshipRepairSpawner" type="Node2D" parent="." node_paths=PackedStringArray("planets_node")]
+script = ExtResource("3_0iqt8")
+planets_node = NodePath("../Planets")
+
+[node name="Timer" type="Timer" parent="SpaceshipRepairSpawner"]
+wait_time = 30.0
+
+[node name="HomeSystemSprite" type="Sprite2D" parent="."]
+z_index = 11
+position = Vector2(856, 144)
+scale = Vector2(16, 16)
+texture = ExtResource("3_q6rhj")
+script = ExtResource("4_0hxbc")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vff0v")
+
+[node name="UnlockContainer" type="VBoxContainer" parent="Panel"]
+z_index = 11
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiscoverLabel" type="Label" parent="Panel/UnlockContainer"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/UnlockContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+theme_override_styles/background = ExtResource("3_quhin")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sop5i")
+
+[node name="PlanetIndicatorPanel" parent="Panel" instance=ExtResource("4_7rlj0")]
+layout_mode = 1
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="SpaceshipRepairSpawner/Timer" to="SpaceshipRepairSpawner" method="_on_timer_timeout"]

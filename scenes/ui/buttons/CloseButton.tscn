@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpdt1m1ad56dr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c1vtn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i41vg"]
+bg_color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy1v0"]
+bg_color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj4fb"]
+bg_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[node name="CloseButton" type="Button"]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c1vtn")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_i41vg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fy1v0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i41vg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aj4fb")
+text = "X"

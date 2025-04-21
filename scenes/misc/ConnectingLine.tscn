@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4s388pe8vp6f"]
+
+[ext_resource type="Script" path="res://scripts/misc/connecting_line.gd" id="1_w6678"]
+
+[node name="ConnectingLine" type="Line2D"]
+z_index = 15
+z_as_relative = false
+width = 4.0
+script = ExtResource("1_w6678")

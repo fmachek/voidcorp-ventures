@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://chbpjeodcjj6u"]
+
+[ext_resource type="Texture2D" uid="uid://0q0s0xpagg3a" path="res://assets/sprites/stars/yellow.png" id="1_88gev"]
+[ext_resource type="Script" path="res://scripts/gameobjects/systems/objects/star.gd" id="1_rld4i"]
+
+[sub_resource type="Gradient" id="Gradient_ee20c"]
+offsets = PackedFloat32Array(0, 0.122642, 0.433962, 0.773585, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.825472, 0.825472, 0.825472, 1, 0.350797, 0.350797, 0.350797, 1, 0.0976365, 0.0976365, 0.0976365, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpryw"]
+gradient = SubResource("Gradient_ee20c")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.1, 0.9)
+metadata/_snap_enabled = true
+
+[node name="Star" type="Node2D"]
+z_index = 6
+z_as_relative = false
+script = ExtResource("1_rld4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_88gev")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(8.9407e-08, -4.44089e-16)
+color = Color(0.956706, 0.958753, 0.955704, 1)
+energy = 0.49
+texture = SubResource("GradientTexture2D_lpryw")

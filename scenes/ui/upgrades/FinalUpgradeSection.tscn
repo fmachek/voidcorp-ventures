@@ -1,0 +1,188 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5e8qn4gi5xw8"]
+
+[ext_resource type="Script" path="res://scripts/ui/upgrades/final_upgrade_section.gd" id="1_4emqu"]
+[ext_resource type="Texture2D" uid="uid://dnqpmi1bh7epg" path="res://assets/ui/upgrades/final_upgrade/requirements/normal.png" id="1_17l68"]
+[ext_resource type="Texture2D" uid="uid://d05vpcf2b51jt" path="res://assets/ui/buttons/upgrade/final/normal.png" id="2_ls0nu"]
+[ext_resource type="Texture2D" uid="uid://7u73gte7vhic" path="res://assets/ui/buttons/upgrade/final/pressed.png" id="3_xhhn8"]
+[ext_resource type="Texture2D" uid="uid://r0p4us7342tg" path="res://assets/ui/buttons/upgrade/final/hover.png" id="4_rsp8f"]
+[ext_resource type="Texture2D" uid="uid://dht3pwvvpt2ts" path="res://assets/ui/buttons/upgrade/final/disabled.png" id="5_eub1n"]
+
+[sub_resource type="Curve" id="Curve_7bkvt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.502146, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="FinalUpgradeSection" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4emqu")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleContainer" type="VBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="TitleLabel" type="Label" parent="MainContainer/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.054902, 0.733333, 0.780392, 1)
+theme_override_font_sizes/font_size = 12
+text = "Galactic Escape"
+
+[node name="QuoteLabel" type="Label" parent="MainContainer/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_font_sizes/font_size = 8
+text = "“Sir, our business may be thriving, but our galaxy is not endless. Perhaps there is a way to defy the rules of physics and travel to other galaxies. Just think of the profit potential...”
+
+- someone you don't remember"
+autowrap_mode = 2
+
+[node name="RequirementSectionContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="RequirementColumn1" type="VBoxContainer" parent="MainContainer/RequirementSectionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RequirementContainer1" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer1"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/20 Upgrades Unlocked"
+
+[node name="RequirementContainer2" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/50 Planets Owned"
+
+[node name="RequirementContainer3" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer3"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn1/RequirementContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/50000 Money"
+
+[node name="RequirementColumn2" type="VBoxContainer" parent="MainContainer/RequirementSectionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="RequirementContainer1" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer1"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/500 Molten Ingot"
+
+[node name="RequirementContainer2" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/25 Warpite"
+
+[node name="RequirementContainer3" type="HBoxContainer" parent="MainContainer/RequirementSectionContainer/RequirementColumn2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RequirementIndicator" type="TextureRect" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer3"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_17l68")
+
+[node name="RequirementLabel" type="Label" parent="MainContainer/RequirementSectionContainer/RequirementColumn2/RequirementContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X/25 Gravitium"
+
+[node name="WarningLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.699195, 2.08165e-06, 6.73831e-07, 1)
+theme_override_font_sizes/font_size = 8
+text = "Warning: Unlocking this upgrade will end the game."
+autowrap_mode = 1
+
+[node name="FinalUpgradeButton" type="TextureButton" parent="MainContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("2_ls0nu")
+texture_pressed = ExtResource("3_xhhn8")
+texture_hover = ExtResource("4_rsp8f")
+texture_disabled = ExtResource("5_eub1n")
+
+[node name="Particles" type="CPUParticles2D" parent="MainContainer/FinalUpgradeButton"]
+visible = false
+position = Vector2(75, 45)
+emission_shape = 3
+emission_rect_extents = Vector2(65, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_7bkvt")
+color = Color(0.0745098, 0.603922, 0.631373, 1)
+
+[node name="Label" type="Label" parent="MainContainer/FinalUpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Depart and Escape"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainContainer/FinalUpgradeButton" to="." method="_on_final_upgrade_button_pressed"]

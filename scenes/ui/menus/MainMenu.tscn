@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://jyx53ynrjdkv"]
+
+[ext_resource type="Script" path="res://scripts/ui/menus/main_menu.gd" id="1_tikfo"]
+[ext_resource type="Texture2D" uid="uid://bqe0v27vngueq" path="res://assets/sprites/background.png" id="2_2fupn"]
+[ext_resource type="Texture2D" uid="uid://bvdhjq2vss6b4" path="res://assets/icon.png" id="2_6c4cu"]
+[ext_resource type="PackedScene" uid="uid://cnxhm7i3ry25p" path="res://scenes/ui/buttons/MenuButton.tscn" id="2_6mes6"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+z_index = 3000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tikfo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2fupn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+
+[node name="MenuContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MenuContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_6c4cu")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/MenuContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.054902, 0, 0.643137, 1)
+theme_override_font_sizes/font_size = 24
+text = "Voidcorp
+Ventures"
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/MenuContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="PlayButton" parent="MarginContainer/MenuContainer/ButtonContainer" instance=ExtResource("2_6mes6")]
+layout_mode = 2
+label_text = "Play"
+
+[node name="RestartButton" parent="MarginContainer/MenuContainer/ButtonContainer" instance=ExtResource("2_6mes6")]
+visible = false
+layout_mode = 2
+label_text = "Restart"
+
+[node name="SettingsButton" parent="MarginContainer/MenuContainer/ButtonContainer" instance=ExtResource("2_6mes6")]
+layout_mode = 2
+label_text = "Settings"
+
+[node name="ExitButton" parent="MarginContainer/MenuContainer/ButtonContainer" instance=ExtResource("2_6mes6")]
+layout_mode = 2
+label_text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

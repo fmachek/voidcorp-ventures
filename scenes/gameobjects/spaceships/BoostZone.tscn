@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl5bk3bi7436r"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/boost_zone.gd" id="1_1gvpn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmnld"]
+radius = 120.0
+
+[sub_resource type="Curve" id="Curve_x5di0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.101449, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="BoostZone" type="Node2D"]
+z_index = 4
+z_as_relative = false
+script = ExtResource("1_1gvpn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 6
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pmnld")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+amount = 120
+lifetime = 5.0
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 80.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_x5di0")
+color = Color(0.74902, 0, 0.74902, 0.556863)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

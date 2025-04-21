@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnxhm7i3ry25p"]
+
+[ext_resource type="Texture2D" uid="uid://bjj3uo1itrvvf" path="res://assets/ui/buttons/menu/normal.png" id="1_8fud2"]
+[ext_resource type="Texture2D" uid="uid://dr1r4ni4xa3m0" path="res://assets/ui/buttons/menu/pressed.png" id="2_rxdfa"]
+[ext_resource type="Texture2D" uid="uid://bf8u00aifc5md" path="res://assets/ui/buttons/menu/hover.png" id="3_wlmnj"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/menu_button.gd" id="4_ilu7g"]
+
+[node name="MenuButton" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(90, 0)
+offset_right = 90.0
+offset_bottom = 32.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_8fud2")
+texture_pressed = ExtResource("2_rxdfa")
+texture_hover = ExtResource("3_wlmnj")
+script = ExtResource("4_ilu7g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Button"
+horizontal_alignment = 1
+vertical_alignment = 1

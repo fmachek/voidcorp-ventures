@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2k773oaymkho"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud/month_label.gd" id="1_x0efl"]
+
+[node name="MonthLabel" type="Label"]
+texture_filter = 2
+theme_override_colors/font_color = Color(0.568627, 0.568627, 0.568627, 1)
+theme_override_font_sizes/font_size = 18
+text = "Month X"
+script = ExtResource("1_x0efl")

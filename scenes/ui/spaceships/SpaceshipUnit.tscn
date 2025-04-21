@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5woow27j6ml7"]
+
+[ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="1_4of34"]
+[ext_resource type="Script" path="res://scripts/ui/spaceship_unit.gd" id="1_sve46"]
+[ext_resource type="Texture2D" uid="uid://dm1230dc170fn" path="res://assets/sprites/spaceships/spaceship.png" id="2_evwuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilwei"]
+bg_color = Color(0.119677, 0.620381, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ccsa"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(1, 1, 1, 1)
+
+[node name="SpaceshipUnit" type="MarginContainer"]
+offset_right = 65.0
+offset_bottom = 38.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_sve46")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="ColorRect" parent="VBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(65, 30)
+layout_mode = 2
+color = Color(0.0165296, 0, 0.223038, 1)
+
+[node name="SpaceshipTexture" type="TextureRect" parent="VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = 11.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.261799
+texture = ExtResource("2_evwuw")
+stretch_mode = 5
+
+[node name="LabelContainer" type="MarginContainer" parent="VBoxContainer/TextureRect"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_right = 49.0
+grow_vertical = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_bottom = -3
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect/LabelContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 4
+text = "Spaceship"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_font_sizes/font_size = 4
+theme_override_styles/background = ExtResource("1_4of34")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ilwei")
+value = 50.0
+
+[node name="OutlinePanel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ccsa")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

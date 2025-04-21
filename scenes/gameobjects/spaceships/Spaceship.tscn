@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://by2qwybik708q"]
+
+[ext_resource type="Texture2D" uid="uid://dm1230dc170fn" path="res://assets/sprites/spaceships/spaceship.png" id="1_ir1si"]
+[ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship.gd" id="1_qgeb3"]
+[ext_resource type="Texture2D" uid="uid://51y4bgl5enu6" path="res://assets/sprites/spaceships/spaceshipflame1.png" id="3_d8l8i"]
+[ext_resource type="Texture2D" uid="uid://bc2s43um7pixh" path="res://assets/sprites/spaceships/spaceshipflame2.png" id="5_byfer"]
+[ext_resource type="Texture2D" uid="uid://56njd7ac615i" path="res://assets/sprites/spaceships/indicator.png" id="6_6n328"]
+[ext_resource type="AudioStream" uid="uid://k84ckgbgt7n" path="res://assets/audio/effects/spaceship.wav" id="6_vft7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s273"]
+size = Vector2(21, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_np5y7"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_d8l8i")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_byfer")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spaceship" type="Node2D"]
+z_index = 10
+script = ExtResource("1_qgeb3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_0s273")
+
+[node name="SpaceshipBody" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("1_ir1si")
+
+[node name="FlameSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-24.5, 0)
+sprite_frames = SubResource("SpriteFrames_np5y7")
+frame_progress = 0.113879
+
+[node name="FlightSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vft7l")
+volume_db = -80.0
+
+[node name="IndicatorSprite" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_6n328")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,294 @@
+[gd_scene load_steps=20 format=3 uid="uid://c6xdi15snkvgw"]
+
+[ext_resource type="Script" path="res://scripts/ui/planet_ui.gd" id="1_23ccb"]
+[ext_resource type="PackedScene" uid="uid://dx3saw32fyv5t" path="res://scenes/ui/misc/ResourceGridContainer.tscn" id="2_mykgm"]
+[ext_resource type="Texture2D" uid="uid://c0jkxrb644nx3" path="res://assets/ui/planet/minecart.png" id="3_5mm64"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_container.gd" id="3_aaisg"]
+[ext_resource type="Texture2D" uid="uid://b3t5ahyv82m71" path="res://assets/ui/planet/factory.png" id="4_ngva1"]
+[ext_resource type="PackedScene" uid="uid://b8ji4mr6uh2rt" path="res://scenes/ui/buttons/MineBuildButton.tscn" id="4_vbx2g"]
+[ext_resource type="PackedScene" uid="uid://vq6x1f5q55bu" path="res://scenes/ui/buttons/FactoryBuildButton.tscn" id="6_nd7bx"]
+[ext_resource type="PackedScene" uid="uid://druowug6eaq3a" path="res://scenes/ui/spaceships/SpaceshipBuildContainer.tscn" id="7_opmso"]
+[ext_resource type="PackedScene" uid="uid://dpdt1m1ad56dr" path="res://scenes/ui/buttons/CloseButton.tscn" id="7_tudek"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/send_crew_button.gd" id="8_8882o"]
+[ext_resource type="Script" path="res://scripts/ui/buttons/planet_ui_close_button.gd" id="8_xicnr"]
+[ext_resource type="Texture2D" uid="uid://bhvq8eislxt56" path="res://assets/ui/buttons/buildcrew/normal/normal.png" id="9_jnxm0"]
+[ext_resource type="Texture2D" uid="uid://s6awhfiu41uu" path="res://assets/ui/buttons/buildcrew/normal/pressed.png" id="10_lfkqp"]
+[ext_resource type="Texture2D" uid="uid://4wapwqwtjvb6" path="res://assets/ui/buttons/buildcrew/normal/hover.png" id="11_71e2e"]
+[ext_resource type="Texture2D" uid="uid://cgr55fy6ths6d" path="res://assets/ui/buttons/buy/red/normal.png" id="13_243ha"]
+[ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="13_iy51q"]
+[ext_resource type="Texture2D" uid="uid://cetexims25us7" path="res://assets/ui/buttons/buy/red/pressed.png" id="14_87l7p"]
+[ext_resource type="Texture2D" uid="uid://da4vu2kd1ilqp" path="res://assets/ui/buttons/buy/red/hover.png" id="15_udaor"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i86gt"]
+bg_color = Color(0.622545, 0.0175748, 4.81308e-08, 1)
+
+[node name="PlanetUI" type="Control"]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -230.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_23ccb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.678431)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlanetNameLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 0
+theme_override_font_sizes/font_size = 8
+text = "<planet_name>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResourceGridContainer" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_mykgm")]
+layout_mode = 2
+
+[node name="InventoryContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_aaisg")
+
+[node name="TitleLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/InventoryContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Resources in storage"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer/InventoryContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CurrencyLabelContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/InventoryContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="BuildContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="MineBuildContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_5mm64")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="InfoContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer/VBoxContainer/InfoContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Mines"
+
+[node name="AmountLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer/VBoxContainer/InfoContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.737193, 0.737193, 0.737193, 1)
+theme_override_font_sizes/font_size = 6
+text = "0
+"
+
+[node name="MineBuildButton" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/MineBuildContainer" instance=ExtResource("4_vbx2g")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="FactoryBuildContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_ngva1")
+expand_mode = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer/VBoxContainer/InfoContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Factories"
+
+[node name="AmountLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer/VBoxContainer/InfoContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.737193, 0.737193, 0.737193, 1)
+theme_override_font_sizes/font_size = 6
+text = "0
+"
+
+[node name="FactoryBuildButton" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/FactoryBuildContainer" instance=ExtResource("6_nd7bx")]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="SpaceshipBuildContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer" instance=ExtResource("7_opmso")]
+layout_mode = 2
+
+[node name="SendCrewButton" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_jnxm0")
+texture_pressed = ExtResource("10_lfkqp")
+texture_hover = ExtResource("11_71e2e")
+script = ExtResource("8_8882o")
+
+[node name="Timer" type="Timer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton"]
+wait_time = 2.0
+
+[node name="ButtonLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "Send Meteor Crew ($500)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpaceshipGridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="ProductionHaltedOverlay" type="ColorRect" parent="ColorRect"]
+visible = false
+z_index = 102
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+color = Color(0.0862745, 0, 0, 0.964706)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/ProductionHaltedOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ProductionHaltedOverlay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="WarningLabel" type="Label" parent="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Production on this planet has halted.
+
+To resume production, you must invest to fix the damage done."
+autowrap_mode = 2
+
+[node name="Button" type="TextureButton" parent="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_243ha")
+texture_pressed = ExtResource("14_87l7p")
+texture_hover = ExtResource("15_udaor")
+
+[node name="Label" type="Label" parent="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 6
+text = "Pay ($1000)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "The clock is ticking..."
+autowrap_mode = 2
+
+[node name="LossTimerProgressBar" type="ProgressBar" parent="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = ExtResource("13_iy51q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i86gt")
+max_value = 60.0
+step = 1.0
+
+[node name="PlanetUICloseButton" parent="ColorRect" instance=ExtResource("7_tudek")]
+z_index = 103
+layout_mode = 1
+script = ExtResource("8_xicnr")
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton" to="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton" method="_on_pressed"]
+[connection signal="timeout" from="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton/Timer" to="ColorRect/MarginContainer/VBoxContainer/BuildContainer/SendCrewButton" method="_on_timer_timeout"]
+[connection signal="pressed" from="ColorRect/ProductionHaltedOverlay/MarginContainer/VBoxContainer/Button" to="." method="_on_pay_button_pressed"]

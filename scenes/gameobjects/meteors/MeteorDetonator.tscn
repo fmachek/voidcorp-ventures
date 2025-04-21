@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgm8erbdcvtox"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/meteors/meteor_detonator.gd" id="1_5o6ok"]
+[ext_resource type="Texture2D" uid="uid://er870n6q7sx6" path="res://assets/sprites/detonators/detonator.png" id="2_erpp1"]
+
+[node name="MeteorDetonator" type="Node2D"]
+script = ExtResource("1_5o6ok")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_erpp1")

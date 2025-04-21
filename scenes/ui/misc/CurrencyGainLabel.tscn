@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4qhs5n48pmwl"]
+
+[ext_resource type="Script" path="res://scripts/ui/currency_gain_label.gd" id="1_mobcf"]
+
+[node name="CurrencyGainLabel" type="Label"]
+z_index = 12
+texture_filter = 2
+theme_override_font_sizes/font_size = 6
+text = "+10 Lunar Ore"
+script = ExtResource("1_mobcf")

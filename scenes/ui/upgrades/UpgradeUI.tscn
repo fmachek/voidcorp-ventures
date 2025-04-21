@@ -1,0 +1,447 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvx2alqq478wh"]
+
+[ext_resource type="Script" path="res://scripts/ui/upgrades/upgrade_ui.gd" id="1_b8678"]
+[ext_resource type="Texture2D" uid="uid://dj3odss26amb8" path="res://assets/ui/upgrades/upgradebg.png" id="1_caife"]
+[ext_resource type="PackedScene" uid="uid://yv0pcm8y130r" path="res://scenes/ui/tooltips/UpgradeTooltip.tscn" id="2_l2783"]
+[ext_resource type="PackedScene" uid="uid://3056mwn30sa1" path="res://scenes/ui/upgrades/UpgradeConnection.tscn" id="3_oo27c"]
+[ext_resource type="PackedScene" uid="uid://8oe54o85f555" path="res://scenes/ui/buttons/UpgradeButton.tscn" id="3_ybmuu"]
+[ext_resource type="PackedScene" uid="uid://dpdt1m1ad56dr" path="res://scenes/ui/buttons/CloseButton.tscn" id="4_mgv62"]
+[ext_resource type="PackedScene" uid="uid://c5e8qn4gi5xw8" path="res://scenes/ui/upgrades/FinalUpgradeSection.tscn" id="6_8k5ov"]
+
+[node name="UpgradeUI" type="Control"]
+z_index = 300
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_b8678")
+
+[node name="UpgradeTooltip" parent="." instance=ExtResource("2_l2783")]
+visible = false
+z_index = 100
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_caife")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 145.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 30
+
+[node name="UpgradeTrack1" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Spaceships
+"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 1
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 2
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 3
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow2" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 100
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 101
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 102
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow3" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow3" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 103
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow3" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow3" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 104
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow3" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow3" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 105
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow4" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow4" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 106
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow4" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow4" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 107
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow4" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow4" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 108
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow5" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow5" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 16
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow5" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow5" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 17
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow5" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow5" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 18
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow6" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow6" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 19
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow6" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow6" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 20
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow6" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow6" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 21
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeTrack2" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Discovery"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 5
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 14
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack2/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 15
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeTrack3" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Meteor Crews"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 6
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 7
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 8
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow2" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 9
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack3/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 10
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeTrack4" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Planets"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 11
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 12
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection4" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 13
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeRow2" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 22
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 23
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection4" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 24
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection5" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton3")
+
+[node name="UpgradeButton4" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack4/UpgradeRow2" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 25
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="FinalUpgradeSection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_8k5ov")]
+layout_mode = 2
+
+[node name="UpgradeUICloseButton" parent="." instance=ExtResource("4_mgv62")]
+z_index = 303
+layout_mode = 1

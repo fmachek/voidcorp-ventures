@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx2jl5k8vrfym"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/meteors/crew_ship.gd" id="1_1sjvv"]
+[ext_resource type="Texture2D" uid="uid://ccnjqr1tt22dv" path="res://assets/sprites/crewships/crewship.png" id="2_e77ef"]
+[ext_resource type="Texture2D" uid="uid://p0gnsf7tn1td" path="res://assets/sprites/crewships/crewshipflame2.png" id="3_ngulg"]
+[ext_resource type="Texture2D" uid="uid://1rf1ejivl1fj" path="res://assets/sprites/crewships/crewshipflame1.png" id="4_g2drp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17w4p"]
+size = Vector2(13, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wp2li"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_ngulg")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_g2drp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CrewShip" type="Node2D"]
+z_index = 8
+z_as_relative = false
+script = ExtResource("1_1sjvv")
+
+[node name="MeteorDetectionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MeteorDetectionArea2D"]
+polygon = PackedVector2Array(8, 4, 130, 70, 130, -70, 8, -4)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_17w4p")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+texture = ExtResource("2_e77ef")
+
+[node name="FlameSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-20, 0)
+sprite_frames = SubResource("SpriteFrames_wp2li")
+frame_progress = 0.0536
+
+[node name="MineTimer" type="Timer" parent="."]
+
+[node name="DetonationTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="MeteorDetectionArea2D" to="." method="_on_meteor_detection_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="MineTimer" to="." method="_on_mine_timer_timeout"]
+[connection signal="timeout" from="DetonationTimer" to="." method="_on_detonation_timer_timeout"]
