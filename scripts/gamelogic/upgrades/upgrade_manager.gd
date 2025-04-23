@@ -75,11 +75,8 @@ func spend_costs(upgrade: Upgrade) -> bool:
 ## Loads all upgrades and adds them to the 'upgrades' dictionary, where the key is the upgrade
 ## id and the value is the upgrade itself.
 func load_upgrades() -> void:
-	# Unlocks the ability to build spaceships
-	var spaceship_row1_upgrade1 = Upgrade.new(1, 'Unlock Spaceships', null, [1000], "Allows you to build spaceships which can claim planets and carry resources.")
-	upgrades[1] = spaceship_row1_upgrade1
 	# Allows spaceships to land on cold planets
-	var spaceship_row1_upgrade2 = Upgrade.new(2, 'Winter Coat', spaceship_row1_upgrade1, [ResourceCurrency.new('Lunar Ingot', 250)], "Allows your spaceships to handle the climate on planets of the Cold type. This allows you to gather new resources.")
+	var spaceship_row1_upgrade2 = Upgrade.new(2, 'Winter Coat', null, [ResourceCurrency.new('Lunar Ingot', 250)], "Allows your spaceships to handle the climate on planets of the Cold type. This allows you to gather new resources.")
 	upgrades[2] = spaceship_row1_upgrade2
 	# Allows spaceships to land on hot planets
 	var spaceship_row1_upgrade3 = Upgrade.new(3, 'Supercooling', spaceship_row1_upgrade2, [ResourceCurrency.new('Freezium', 250)], "Allows your spaceships to handle the climate on planets of the Hot type. This allows you to gather new resources.")

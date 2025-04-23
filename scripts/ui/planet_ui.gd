@@ -43,13 +43,6 @@ signal planet_changed(new_planet: Planet)
 
 
 func _ready() -> void:
-	var unlock_spaceships_upgrade: Upgrade = UpgradeManager.upgrades[1]
-	if not unlock_spaceships_upgrade.is_unlocked:
-		spaceship_build_container.hide()
-		unlock_spaceships_upgrade.connect("unlocked", _handle_spaceship_unlock)
-	else:
-		_handle_spaceship_unlock()
-	
 	GameManager.connect("game_won", hide_quickly)
 	GameManager.connect("game_lost", hide_quickly)
 
