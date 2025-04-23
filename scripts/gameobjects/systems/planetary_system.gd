@@ -185,7 +185,7 @@ func zoom_in():
 ## Handles zoom out for clarity.
 func zoom_out():
 	var planet_nodes = planets.get_children()
-	center_sprite.scale = Vector2(8,8)
+	center_sprite.scale = Vector2(10,10)
 	if center_light:
 		center_light.enabled = false
 	for planet in planet_nodes:

@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://bv7xghecno4bd"]
+[gd_scene load_steps=16 format=3 uid="uid://bv7xghecno4bd"]
 
 [ext_resource type="PackedScene" uid="uid://cx4ndlypfcu6e" path="res://scenes/ui/game/GameUI.tscn" id="2_rsrtc"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="3_khdbj"]
 [ext_resource type="Script" path="res://scripts/ui/ui_layer.gd" id="4_5pbhw"]
 [ext_resource type="PackedScene" uid="uid://dvx2alqq478wh" path="res://scenes/ui/upgrades/UpgradeUI.tscn" id="4_bk77m"]
 [ext_resource type="PackedScene" uid="uid://ehayd8qixqmn" path="res://scenes/ui/market/MarketUI.tscn" id="7_fd8hf"]
-[ext_resource type="Texture2D" uid="uid://bqdm53luetins" path="res://assets/sprites/background.png" id="8_3xqil"]
+[ext_resource type="Texture2D" uid="uid://bqdm53luetins" path="res://assets/sprites/background/background.png" id="8_3xqil"]
 [ext_resource type="PackedScene" uid="uid://jyx53ynrjdkv" path="res://scenes/ui/menus/MainMenu.tscn" id="8_tgvop"]
 [ext_resource type="PackedScene" uid="uid://csym5wsfd233l" path="res://scenes/ui/menus/SettingsMenu.tscn" id="9_rf6kf"]
 [ext_resource type="PackedScene" uid="uid://b3x07cjbctymn" path="res://scenes/ui/tooltips/SpaceshipTooltip.tscn" id="9_so2wl"]
+[ext_resource type="Texture2D" uid="uid://dm2ppi6uumw8u" path="res://assets/sprites/background/stars.png" id="10_igm0i"]
 [ext_resource type="Script" path="res://scripts/soundplayers/soundtrack_player.gd" id="13_317ob"]
 [ext_resource type="AudioStream" uid="uid://c3y0em372rlr8" path="res://assets/audio/ui/ButtonClick.wav" id="13_hfn75"]
 [ext_resource type="Script" path="res://scripts/gamelogic/time_manager.gd" id="14_4mp6w"]
@@ -51,9 +52,19 @@ position = Vector2(320, 180)
 script = ExtResource("3_khdbj")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="MainCamera"]
-position = Vector2(-1.90735e-06, 8.9407e-07)
-scale = Vector2(11, 11)
 texture = ExtResource("8_3xqil")
+
+[node name="StarsSprite" type="Sprite2D" parent="MainCamera"]
+texture = ExtResource("10_igm0i")
+
+[node name="DarkenRect" type="ColorRect" parent="MainCamera"]
+custom_minimum_size = Vector2(640, 360)
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+pivot_offset = Vector2(320, 180)
+color = Color(0, 0, 0, 0.443137)
 
 [node name="TimeManager" type="Timer" parent="."]
 script = ExtResource("14_4mp6w")

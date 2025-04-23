@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://jyx53ynrjdkv"]
 
 [ext_resource type="Script" path="res://scripts/ui/menus/main_menu.gd" id="1_tikfo"]
-[ext_resource type="Texture2D" uid="uid://bqe0v27vngueq" path="res://assets/sprites/background.png" id="2_2fupn"]
-[ext_resource type="Texture2D" uid="uid://bvdhjq2vss6b4" path="res://assets/icon.png" id="2_6c4cu"]
+[ext_resource type="Texture2D" uid="uid://bqdm53luetins" path="res://assets/sprites/background/background.png" id="2_2fupn"]
+[ext_resource type="Texture2D" uid="uid://ycv25255ye7t" path="res://assets/icon.png" id="2_6c4cu"]
 [ext_resource type="PackedScene" uid="uid://cnxhm7i3ry25p" path="res://scenes/ui/buttons/MenuButton.tscn" id="2_6mes6"]
 
 [node name="MainMenu" type="Control"]
@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tikfo")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BackgroundRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,16 +40,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MenuContainer"]
+[node name="TitleContainer" type="HBoxContainer" parent="MarginContainer/MenuContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/MenuContainer/HBoxContainer"]
+[node name="LogoRect" type="TextureRect" parent="MarginContainer/MenuContainer/TitleContainer"]
 layout_mode = 2
 texture = ExtResource("2_6c4cu")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="MarginContainer/MenuContainer/HBoxContainer"]
+[node name="GameTitleLabel" type="Label" parent="MarginContainer/MenuContainer/TitleContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.054902, 0, 0.643137, 1)

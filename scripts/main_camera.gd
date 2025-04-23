@@ -2,6 +2,7 @@ extends Camera2D
 class_name MainCamera
 ## This class represents the main game camera.
 
+
 ## This variable is used to determine position transition smoothness.
 var smoothness: int = 5
 ## This variable stores the current target of the camera.
@@ -14,39 +15,53 @@ var default_move_v: Vector2 = Vector2(0, 5)
 ## This is the number used during movement to multiply the movement vector.
 var movement_muliplier: int = 20
 
+## Emitted when the camera zoom changes.
 signal zoom_changed(new_zoom: float)
+
 
 ## Handles different input such as zoom and movement.[br][br]
 ## The player can make the camera zoom in and out and move left, right, up and down.
 func _process(delta: float) -> void:
-	var zoom_x = self.zoom.x
+	var zoom_x = zoom.x
 	default_move_h = Vector2(5/zoom_x, 0)
 	default_move_v = Vector2(0, 5/zoom_x)
+	
+	# Focus on the camera target
 	if target:
-		self.position = self.position.lerp(target.global_position, smoothness * delta)
+		position = position.lerp(target.global_position, smoothness * delta)
 	
-	if Input.is_action_pressed('camera_down') and not GameManager.is_animation_playing and not GameManager.is_game_lost:
-		target = null
-		var new_pos = self.position + (default_move_v * delta * movement_muliplier)
-		self.position = self.position.lerp(new_pos, smoothness)
+	# Disable camera movement while the win animation is playing, or if the game
+	# is on the lose screen.
+	if GameManager.is_animation_playing or GameManager.is_game_lost:
+		return
 	
-	if Input.is_action_pressed('camera_up') and not GameManager.is_animation_playing and not GameManager.is_game_lost:
+	# Move camera up
+	if Input.is_action_pressed('camera_down'):
 		target = null
-		var new_pos = self.position - (default_move_v * delta * movement_muliplier)
-		self.position = self.position.lerp(new_pos, smoothness)
+		var new_pos = position + (default_move_v * delta * movement_muliplier)
+		position = position.lerp(new_pos, smoothness)
 	
-	if Input.is_action_pressed('camera_left') and not GameManager.is_animation_playing and not GameManager.is_game_lost:
+	# Move camera down
+	if Input.is_action_pressed('camera_up'):
 		target = null
-		var new_pos = self.position - (default_move_h * delta * movement_muliplier)
-		self.position = self.position.lerp(new_pos, smoothness)
+		var new_pos = position - (default_move_v * delta * movement_muliplier)
+		position = position.lerp(new_pos, smoothness)
 	
-	if Input.is_action_pressed('camera_right') and not GameManager.is_animation_playing and not GameManager.is_game_lost:
+	# Move camera to the left
+	if Input.is_action_pressed('camera_left'):
 		target = null
-		var new_pos = self.position + (default_move_h * delta * movement_muliplier)
-		self.position = self.position.lerp(new_pos, smoothness)
+		var new_pos = position - (default_move_h * delta * movement_muliplier)
+		position = position.lerp(new_pos, smoothness)
+	
+	# Move camera to the right
+	if Input.is_action_pressed('camera_right'):
+		target = null
+		var new_pos = position + (default_move_h * delta * movement_muliplier)
+		position = position.lerp(new_pos, smoothness)
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Handle camera zoom in and out
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom_in()
@@ -54,8 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			zoom_out()
 
 
-## This function causes the camera to "focus" on the [param object], playing
-## a zoom animation to adjust to it.
+## This function causes the camera to focus on the [param object].
 func focus_on(object):
 	target = object
 
@@ -63,20 +77,38 @@ func focus_on(object):
 func zoom_in() -> void:
 	if GameManager.is_animation_playing or GameManager.is_game_lost:
 		return
-	if self.zoom == Vector2(1, 1):
+	if zoom == Vector2(1, 1):
 		return
 	var mouse_pos = get_global_mouse_position()
-	self.global_position = mouse_pos
-	self.zoom = Vector2(1, 1)
-	emit_signal('zoom_changed', self.zoom.x)
+	global_position = mouse_pos
+	zoom = Vector2(1, 1)
+	
+	zoom_background_in()
+	
+	emit_signal('zoom_changed', zoom.x)
 
 
 func zoom_out() -> void:
 	if GameManager.is_animation_playing or GameManager.is_game_lost:
 		return
-	self.zoom = Vector2(0.1, 0.1)
+	zoom = Vector2(0.1, 0.1)
 	target = null
-	emit_signal('zoom_changed', self.zoom.x)
+	
+	zoom_background_out()
+	
+	emit_signal('zoom_changed', zoom.x)
+
+
+func zoom_background_out() -> void:
+	$BackgroundSprite.scale = Vector2(10, 10)
+	$StarsSprite.scale = Vector2(10, 10)
+	$DarkenRect.scale = Vector2(10, 10)
+
+
+func zoom_background_in() -> void:
+	$BackgroundSprite.scale = Vector2(1, 1)
+	$StarsSprite.scale = Vector2(1, 1)
+	$DarkenRect.scale = Vector2(1, 1)
 
 
 func reset() -> void:
