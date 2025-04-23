@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvx2alqq478wh"]
 
 [ext_resource type="Script" path="res://scripts/ui/upgrades/upgrade_ui.gd" id="1_b8678"]
-[ext_resource type="Texture2D" uid="uid://dj3odss26amb8" path="res://assets/ui/upgrades/upgradebg.png" id="1_caife"]
+[ext_resource type="Texture2D" uid="uid://cdqqtiwlkekfx" path="res://assets/ui/upgrades/upgradebg.png" id="1_caife"]
 [ext_resource type="PackedScene" uid="uid://yv0pcm8y130r" path="res://scenes/ui/tooltips/UpgradeTooltip.tscn" id="2_l2783"]
 [ext_resource type="PackedScene" uid="uid://3056mwn30sa1" path="res://scenes/ui/upgrades/UpgradeConnection.tscn" id="3_oo27c"]
 [ext_resource type="PackedScene" uid="uid://8oe54o85f555" path="res://scenes/ui/buttons/UpgradeButton.tscn" id="3_ybmuu"]
@@ -82,16 +82,6 @@ text = "Spaceships
 [node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1"]
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-upgrade_id = 1
-tooltip = NodePath("../../../../../../../UpgradeTooltip")
-
-[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
-layout_mode = 2
-upgrade_button = NodePath("../UpgradeButton")
 
 [node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack1/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
 custom_minimum_size = Vector2(60, 0)

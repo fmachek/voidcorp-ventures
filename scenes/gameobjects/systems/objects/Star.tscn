@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://chbpjeodcjj6u"]
 
-[ext_resource type="Texture2D" uid="uid://0q0s0xpagg3a" path="res://assets/sprites/stars/yellow.png" id="1_88gev"]
+[ext_resource type="Texture2D" uid="uid://cacmmc3obogs7" path="res://assets/sprites/stars/yellow.png" id="1_88gev"]
 [ext_resource type="Script" path="res://scripts/gameobjects/systems/objects/star.gd" id="1_rld4i"]
 
 [sub_resource type="Gradient" id="Gradient_ee20c"]
@@ -22,7 +22,6 @@ z_as_relative = false
 script = ExtResource("1_rld4i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("1_88gev")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]

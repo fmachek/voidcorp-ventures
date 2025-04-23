@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="1_4of34"]
 [ext_resource type="Script" path="res://scripts/ui/spaceship_unit.gd" id="1_sve46"]
-[ext_resource type="Texture2D" uid="uid://dm1230dc170fn" path="res://assets/sprites/spaceships/spaceship.png" id="2_evwuw"]
+[ext_resource type="Texture2D" uid="uid://dtfvrpk067t2a" path="res://assets/sprites/spaceships/spaceship.png" id="2_evwuw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilwei"]
 bg_color = Color(0.119677, 0.620381, 0, 1)
@@ -15,6 +15,7 @@ border_color = Color(1, 1, 1, 1)
 offset_right = 65.0
 offset_bottom = 38.0
 mouse_filter = 0
+mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
 script = ExtResource("1_sve46")
 
@@ -39,6 +40,7 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.261799
+mouse_filter = 2
 texture = ExtResource("2_evwuw")
 stretch_mode = 5
 

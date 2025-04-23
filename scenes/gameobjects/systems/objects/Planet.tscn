@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1r5b2rl3tv3e"]
 
-[ext_resource type="Texture2D" uid="uid://cwxv7tk1lkim5" path="res://assets/sprites/planets/homeplanet.png" id="1_4e37t"]
+[ext_resource type="Texture2D" uid="uid://cbwdonwmn8dj5" path="res://assets/sprites/planets/homeplanet.png" id="1_4e37t"]
 [ext_resource type="Script" path="res://scripts/gameobjects/systems/objects/planet.gd" id="1_ffoq4"]
-[ext_resource type="Texture2D" uid="uid://b0g2un8gen1r0" path="res://assets/sprites/planets/planethighlight.png" id="3_18a15"]
+[ext_resource type="Texture2D" uid="uid://bdvrfous14cbv" path="res://assets/sprites/planets/planethighlight.png" id="3_18a15"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ta2q"]
 radius = 5.0

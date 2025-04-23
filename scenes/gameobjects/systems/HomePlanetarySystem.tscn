@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/gameobjects/systems/home_planetary_system.gd" id="1_08usa"]
 [ext_resource type="PackedScene" uid="uid://beqbst3q6fars" path="res://scenes/gameobjects/meteors/MeteorSpawner.tscn" id="2_dtcgx"]
 [ext_resource type="Script" path="res://scripts/gameobjects/spaceships/spaceship_repair_spawner.gd" id="3_0iqt8"]
-[ext_resource type="Texture2D" uid="uid://f7h8bmhy3hc8" path="res://assets/sprites/planets/homeplaneticon.png" id="3_q6rhj"]
+[ext_resource type="Texture2D" uid="uid://b3510tvl3m1nc" path="res://assets/sprites/planets/homeplaneticon.png" id="3_q6rhj"]
 [ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="3_quhin"]
 [ext_resource type="Script" path="res://scripts/misc/home_system_sprite.gd" id="4_0hxbc"]
 [ext_resource type="PackedScene" uid="uid://bw0iwyxhorfjc" path="res://scenes/ui/systems/PlanetIndicatorPanel.tscn" id="4_7rlj0"]
@@ -107,6 +107,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_sop5i")
 
 [node name="PlanetIndicatorPanel" parent="Panel" instance=ExtResource("4_7rlj0")]
 layout_mode = 1
+mouse_filter = 2
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

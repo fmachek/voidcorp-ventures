@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name PlanetTooltip
 ## This class represents the tooltip that shows up when you hover over a [Planet].
 
@@ -35,10 +35,33 @@ func _on_resource2_changed(new_value: int):
 
 ## Moves the tooltip to the mouse position every frame, but only if it's currently visible.
 func _process(delta: float) -> void:
-	if planet != null and self.visible:
-		var mouse_pos = get_viewport().get_mouse_position()
-		$ColorRect.position.x = mouse_pos.x
-		$ColorRect.position.y = mouse_pos.y - $ColorRect.size.y
+	if planet != null and visible:
+		var rect_width = $ColorRect.size.x
+		var mouse_pos = get_global_mouse_position()
+		
+		var new_pos = mouse_pos
+		
+		var game_ui = $"/root/Game/UILayer/GameUI"
+		var planet_ui = game_ui.get_node("PlanetUI")
+		
+		var limit_x
+		if planet_ui.visible:
+			limit_x = planet_ui.global_position.x
+		else:
+			limit_x = game_ui.global_position.x + game_ui.size.x
+		
+		if mouse_pos.x > limit_x:
+			var x_difference = mouse_pos.x - limit_x
+			new_pos.x -= x_difference
+		
+		if new_pos.x + rect_width > limit_x:
+			new_pos.x -= rect_width
+		
+		var limit_y = planet_ui.global_position.y
+		if mouse_pos.y - $ColorRect.size.y > limit_y:
+			new_pos.y -= $ColorRect.size.y
+		
+		global_position = new_pos
 
 ## This function updates the tooltip contents such as the planet name label and
 ## owned label.

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgdqwdnl8yfdr"]
 
-[ext_resource type="Texture2D" uid="uid://cta4efyfit21o" path="res://assets/sprites/blackholes/blackhole.png" id="1_hq4hi"]
+[ext_resource type="Texture2D" uid="uid://dpw0dmuwejspt" path="res://assets/sprites/blackholes/blackhole.png" id="1_hq4hi"]
 [ext_resource type="Script" path="res://scripts/gameobjects/systems/objects/black_hole.gd" id="1_j18jm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvye3"]

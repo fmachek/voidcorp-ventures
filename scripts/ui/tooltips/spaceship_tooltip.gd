@@ -9,8 +9,22 @@ var spaceship: Spaceship = null
 
 func _process(delta: float) -> void:
 	if spaceship != null:
+		var rect_width = $ColorRect.size.x
 		var mouse_pos = get_global_mouse_position()
-		self.global_position = mouse_pos + Vector2(0, -self.size.y)
+		
+		var new_pos = mouse_pos
+		
+		var game_ui = $"/root/Game/UILayer/GameUI"
+		var planet_ui = game_ui.get_node("PlanetUI")
+		
+		var limit_x = game_ui.global_position.x + game_ui.size.x
+		
+		if new_pos.x + rect_width > limit_x:
+			new_pos.x -= rect_width
+		
+		new_pos.y -= $ColorRect.size.y
+		
+		global_position = new_pos
 
 
 func load_spaceship(spaceship: Spaceship) -> void:
