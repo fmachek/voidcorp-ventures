@@ -114,3 +114,4 @@ func zoom_background_in() -> void:
 func reset() -> void:
 	target = null
 	zoom = Vector2(1, 1)
+	zoom_background_in()
