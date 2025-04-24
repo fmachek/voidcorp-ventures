@@ -175,7 +175,7 @@ func load_panel_stylebox() -> void:
 ## Handles zoom in for clarity.
 func zoom_in():
 	var planet_nodes = planets.get_children()
-	center_sprite.scale = Vector2(2,2)
+	center_sprite.scale = Vector2(1,1)
 	if center_light:
 		center_light.enabled = true
 	for planet in planet_nodes:

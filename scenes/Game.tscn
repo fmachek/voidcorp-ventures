@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jyx53ynrjdkv" path="res://scenes/ui/menus/MainMenu.tscn" id="8_tgvop"]
 [ext_resource type="PackedScene" uid="uid://csym5wsfd233l" path="res://scenes/ui/menus/SettingsMenu.tscn" id="9_rf6kf"]
 [ext_resource type="PackedScene" uid="uid://b3x07cjbctymn" path="res://scenes/ui/tooltips/SpaceshipTooltip.tscn" id="9_so2wl"]
-[ext_resource type="Texture2D" uid="uid://dm2ppi6uumw8u" path="res://assets/sprites/background/stars.png" id="10_igm0i"]
+[ext_resource type="Texture2D" uid="uid://kncr2jxt3ccu" path="res://assets/sprites/background/stars.png" id="10_igm0i"]
 [ext_resource type="Script" path="res://scripts/soundplayers/soundtrack_player.gd" id="13_317ob"]
 [ext_resource type="AudioStream" uid="uid://c3y0em372rlr8" path="res://assets/audio/ui/ButtonClick.wav" id="13_hfn75"]
 [ext_resource type="Script" path="res://scripts/gamelogic/time_manager.gd" id="14_4mp6w"]
