@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjr2wrruivm7x"]
 
 [ext_resource type="Script" path="res://scripts/gameobjects/meteors/meteor.gd" id="1_jgsvn"]
-[ext_resource type="Texture2D" uid="uid://c6sxwhhw3yix1" path="res://assets/sprites/meteors/meteor.png" id="2_rtihh"]
-[ext_resource type="Texture2D" uid="uid://ddhabcq2cq2nc" path="res://assets/particles/meteorparticle.png" id="5_gj3py"]
-[ext_resource type="AudioStream" uid="uid://dmmpx2oppfyj4" path="res://assets/audio/effects/explosion.wav" id="8_qb41b"]
-[ext_resource type="Texture2D" uid="uid://bnv471socppli" path="res://assets/particles/explosionparticle.png" id="9_7j73o"]
+[ext_resource type="Texture2D" uid="uid://dwplp576e2jbi" path="res://assets/sprites/meteors/meteor.png" id="2_rtihh"]
+[ext_resource type="Texture2D" uid="uid://2jeseq1e4nkw" path="res://assets/particles/meteorparticle.png" id="5_gj3py"]
+[ext_resource type="AudioStream" uid="uid://ew35om2kqa87" path="res://assets/audio/effects/explosion.wav" id="8_qb41b"]
+[ext_resource type="Texture2D" uid="uid://cb2ssx8in82e4" path="res://assets/particles/explosionparticle.png" id="9_7j73o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7no00"]
 radius = 6.0

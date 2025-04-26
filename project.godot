@@ -34,6 +34,7 @@ ResourceGainLabelSpawner="*res://scripts/misc/resource_gain_label_spawner.gd"
 PriceHistoryManager="*res://scripts/gamelogic/price_history_manager.gd"
 ResourceManager="*res://scripts/gamelogic/resource_manager.gd"
 WinRequirementHandler="*res://scripts/gamelogic/win_requirement_handler.gd"
+ConsoleMessageManager="*res://scripts/ui/console/console_message_manager.gd"
 
 [display]
 

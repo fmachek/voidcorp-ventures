@@ -1,0 +1,151 @@
+[gd_scene load_steps=14 format=3 uid="uid://bg28veij7rr1"]
+
+[ext_resource type="Script" path="res://scripts/ui/console/console.gd" id="1_1kf4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6cnx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axsa6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfx2j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7x1qk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cs21r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmgjk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx7fb"]
+bg_color = Color(0.223103, 0.223103, 0.223103, 0.678431)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d76ow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c25a8"]
+bg_color = Color(0, 0, 0, 0.803922)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynug6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh53c"]
+content_margin_left = 5.0
+content_margin_top = 0.0
+content_margin_right = 5.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.678431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhv4e"]
+bg_color = Color(0, 0, 0, 0.678431)
+
+[node name="Console" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("1_1kf4i")
+
+[node name="ConsoleContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="SectionButtonContainer" type="HBoxContainer" parent="ConsoleContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 2
+
+[node name="AllButton" type="Button" parent="ConsoleContainer/SectionButtonContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6cnx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_axsa6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gfx2j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7x1qk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cs21r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wmgjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yx7fb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d76ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c25a8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
+text = "All"
+
+[node name="InfoButton" type="Button" parent="ConsoleContainer/SectionButtonContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6cnx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_axsa6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gfx2j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7x1qk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cs21r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wmgjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yx7fb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d76ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c25a8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
+text = "Info"
+
+[node name="WarningButton" type="Button" parent="ConsoleContainer/SectionButtonContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6cnx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_axsa6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gfx2j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7x1qk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cs21r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wmgjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yx7fb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d76ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c25a8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
+text = "Warnings"
+
+[node name="ConsoleScrollContainer" type="ScrollContainer" parent="ConsoleContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lhv4e")
+
+[node name="ConsoleMarginContainer" type="MarginContainer" parent="ConsoleContainer/ConsoleScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MessageContainer" type="VBoxContainer" parent="ConsoleContainer/ConsoleScrollContainer/ConsoleMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfoContainer" type="VBoxContainer" parent="ConsoleContainer/ConsoleScrollContainer/ConsoleMarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WarningContainer" type="VBoxContainer" parent="ConsoleContainer/ConsoleScrollContainer/ConsoleMarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="_on_all_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="_on_warning_button_pressed"]

@@ -114,7 +114,7 @@ func add_resource(resource_name: String, amount: int):
 		if resource_name in resources: # Find the resource with the name
 			var resource = resources[resource_name]
 			resource.add(amount) # Add the amount to the resource
-			print('Player gained ' + str(amount) + ' ' + resource.name)
+			ConsoleMessageManager.add_info_message('You have gained ' + str(amount) + ' ' + resource.name + ".")
 			return
 
 
@@ -135,7 +135,7 @@ func sell_resource(resource_name: String, amount: int) -> bool:
 		var price = PriceHistoryManager.get_current_price(resource_name)
 		add_money(price * amount)
 		PriceHistoryManager.change_resource_demand(resource_name, -amount)
-		print("Sold " + str(amount) + " " + resource_name + " for $" + str(price*amount) + ".")
+		ConsoleMessageManager.add_info_message("You sold " + str(amount) + " " + resource_name + " for $" + str(price*amount) + ".")
 	return success
 
 

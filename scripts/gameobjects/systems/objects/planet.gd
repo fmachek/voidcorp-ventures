@@ -289,6 +289,7 @@ func look_for_gravitium() -> int:
 	if randf() < (chance / 100.0):
 		var gravitium_particles: CPUParticles2D = $GravitiumParticles
 		gravitium_particles.emitting = true
+		ConsoleMessageManager.add_info_message("Gravitium has been found on planet " + planet_name + "!")
 		return 1
 	else:
 		return 0
@@ -436,6 +437,8 @@ func land_spaceship(spaceship: Spaceship) -> void:
 	if not owned:
 		owned = true
 		GameManager.planet_claimed()
+		ConsoleMessageManager.add_info_message("You have claimed planet " + planet_name + ".")
+		
 		emit_signal('claimed')
 
 
@@ -457,8 +460,8 @@ func halt_production() -> void:
 			bonus_timer.paused = true
 	downtime_seconds = 0
 	loss_timer.start()
+	ConsoleMessageManager.add_warning_message("Production has halted on planet " + planet_name + ".", focus_camera_on_planet)
 	emit_signal("production_halted")
-	print("Production has halted on planet " + planet_name + ".")
 
 
 ## Production of resources resumes on the planet.
@@ -470,8 +473,8 @@ func resume_production() -> void:
 	if can_mine_bonus_resources:
 		if mines > 0:
 			bonus_timer.paused = false
+	ConsoleMessageManager.add_info_message("Production has resumed on planet " + planet_name + ".")
 	emit_signal("production_resumed")
-	print("Production has been resumed on planet " + planet_name + ".")
 
 
 ## Handles meteor collisions. If the planet is owned,
@@ -662,6 +665,7 @@ func lose_planet() -> void:
 	spaceships.clear()
 	
 	GameManager.planet_lost()
+	ConsoleMessageManager.add_warning_message("You have lost planet " + planet_name + ".", focus_camera_on_planet)
 	emit_signal("lost")
 	
 	if is_home_planet: # Lose the game if the home planet is lost.
@@ -676,3 +680,17 @@ func _on_loss_timer_timeout() -> void:
 	
 	if downtime_seconds == 60:
 		lose_planet()
+
+
+func _on_meteor_detector_area_2d_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if parent is Meteor:
+		var resource: ResourceCurrency = parent.rare_resource
+		if resource != null:
+			ConsoleMessageManager.add_info_message("A meteor containing " + resource.name + " is near planet " + planet_name + "!")
+
+
+func focus_camera_on_planet() -> void:
+	camera.target = null
+	camera.zoom_in()
+	camera.global_position = global_position
