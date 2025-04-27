@@ -9,6 +9,12 @@ class_name Console
 @onready var console_scroll_container: ScrollContainer = $ConsoleContainer/ConsoleScrollContainer
 
 
+func _ready() -> void:
+	# Hide the console when the game is won or lost
+	GameManager.connect("game_won", hide)
+	GameManager.connect("game_lost", hide)
+
+
 ## Checks if a message container contains more than 100 messages.
 ## If so, the first message out of those 100+ is freed.
 func check_message_limit(container: Container) -> void:
