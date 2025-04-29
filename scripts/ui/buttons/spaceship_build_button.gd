@@ -7,6 +7,8 @@ func _ready():
 	self.show_cost = false
 	self.label.text = "Build"
 	super()
+	
+	GameManager.resources["Atomsteel"].connect("amount_changed", _handle_atomsteel_change)
 
 
 func _on_pressed() -> void:
@@ -31,3 +33,22 @@ func build_spaceship():
 	GameManager.spend_money(1000)
 		
 	var spaceship = current_planet.build_spaceship()
+
+
+func _handle_money_changed(new_money: int) -> void:
+	check_costs(new_money, GameManager.resources["Atomsteel"].amount)
+
+
+func _handle_atomsteel_change(new_atomsteel: int) -> void:
+	check_costs(GameManager.money, new_atomsteel)
+
+
+func check_costs(money: int, atomsteel: int) -> void:
+	if money >= build_cost and atomsteel >= 10:
+		texture_normal = normal_green_texture
+		texture_hover = hover_green_texture
+		texture_pressed = pressed_green_texture
+	else:
+		texture_normal = normal_red_texture
+		texture_hover = hover_red_texture
+		texture_pressed = pressed_red_texture

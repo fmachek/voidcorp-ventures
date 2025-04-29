@@ -49,7 +49,6 @@ func play_soundtrack():
 	
 	stream = soundtrack
 	play()
-	print("Soundtrack started")
 
 
 func reset() -> void:
