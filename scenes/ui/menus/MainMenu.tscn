@@ -79,6 +79,21 @@ label_text = "Settings"
 layout_mode = 2
 label_text = "Exit"
 
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "v1.1.0"
+
 [connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
