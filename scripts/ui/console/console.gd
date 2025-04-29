@@ -76,3 +76,7 @@ func _on_warning_button_pressed() -> void:
 func scroll_to_bottom() -> void:
 	await get_tree().process_frame
 	console_scroll_container.scroll_vertical = console_scroll_container.get_v_scroll_bar().max_value
+
+
+func play_button_click_sound() -> void:
+	$"/root/Game/ButtonClickPlayer".play()

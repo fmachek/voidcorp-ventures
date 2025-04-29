@@ -35,6 +35,7 @@ func _on_mouse_exited() -> void:
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		$"/root/Game/ButtonClickPlayer".play()
 		emit_signal("clicked", self)
 
 

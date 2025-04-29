@@ -146,6 +146,9 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="_on_all_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="_on_warning_button_pressed"]

@@ -109,3 +109,7 @@ func _on_max_button_pressed() -> void:
 func load_resource_icon(resource_name: String) -> void:
 	var texture: Texture2D = ResourceTextureLoader.get_resource_texture(resource_name)
 	resource_icon.texture = texture
+
+
+func play_button_click_sound() -> void:
+	$"/root/Game/ButtonClickPlayer".play()

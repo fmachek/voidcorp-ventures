@@ -61,3 +61,4 @@ func _on_exit_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	GameManager.restart_game()
+	button_click_player.play()

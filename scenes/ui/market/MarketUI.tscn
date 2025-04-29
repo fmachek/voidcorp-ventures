@@ -196,5 +196,7 @@ layout_mode = 1
 mouse_force_pass_scroll_events = false
 
 [connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/MaxButton" to="." method="_on_max_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/MaxButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/SellButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
