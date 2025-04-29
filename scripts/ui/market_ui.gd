@@ -3,7 +3,8 @@ class_name MarketUI
 
 @onready var button_click_player: AudioStreamPlayer = $"/root/Game/ButtonClickPlayer"
 @onready var resource_vbox_container: VBoxContainer = $MainMarginContainer/GridContainer/LeftPanel/ResourceScrollContainer/ResourceVBoxContainer
-@onready var resource_name_label: Label = $MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceNameLabel
+@onready var resource_name_label: Label = $MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceContainer/ResourceNameLabel
+@onready var resource_icon: TextureRect = $MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceContainer/ResourceIcon
 @onready var sell_spin_box: SpinBox = $MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/SellSpinBox
 var graph: Graph
 var graph_resource_name: String
@@ -27,12 +28,14 @@ func _ready() -> void:
 	GameManager.connect("game_lost", hide)
 
 
+## Close the market UI when the close button is clicked.
 func _on_close_button_pressed() -> void:
 	button_click_player.play()
 	mouse_filter = MOUSE_FILTER_IGNORE
-	self.hide()
+	hide()
 
 
+## Loads all currencies in the left panel.
 func load_resource_container() -> void:
 	var player_resources = GameManager.resources
 	for resource_name in player_resources:
@@ -43,16 +46,19 @@ func load_resource_container() -> void:
 		resource_container.connect("clicked", _on_resource_container_clicked)
 
 
+## Load last 5 months of the price history on the graph.
 func _on_price_changed(resource_name: String, new_price: int) -> void:
 	if resource_name == graph_resource_name:
 		graph.load_points(PriceHistoryManager.get_last_5_months_points(resource_name))
 
 
+## Set the graph resource to the one detecting the click.
 func _on_resource_container_clicked(container: MarketResourceContainer) -> void:
 	var resource: ResourceCurrency = container.resource
 	set_graph_resource(resource.name)
 
 
+## Sets the resource being displayed on the graph.
 func set_graph_resource(resource_name: String) -> void:
 	if graph_resource_name != resource_name:
 		# Check the current player resource, disconnect the signal
@@ -71,17 +77,39 @@ func set_graph_resource(resource_name: String) -> void:
 		
 		graph.load_points(PriceHistoryManager.get_last_5_months_points(graph_resource_name))
 		resource_name_label.text = graph_resource_name + " Price History"
+		
+		# Load the resource icon texture
+		load_resource_icon(graph_resource_name)
 
 
+## Sell the resource. The amount is the current spin box value.
 func _on_sell_button_pressed() -> void:
 	var value = sell_spin_box.value
 	GameManager.sell_resource(graph_resource_name, value)
 
 
+## Change the spin box maximum value when the player resource amount changes.
 func _on_graph_resource_amount_changed(new_amount: int) -> void:
 	sell_spin_box.max_value = new_amount
 
 
+## Close the UI if it's open.
 func close_if_opened() -> void:
 	if visible:
 		hide()
+
+
+## When the "Max" button is clicked, set the amount of the resource
+## being sold to the maximum amount available.
+func _on_max_button_pressed() -> void:
+	sell_spin_box.value = sell_spin_box.max_value
+
+
+## Loads a resource icon from the resources based on the resource name.
+func load_resource_icon(resource_name: String) -> void:
+	resource_name = resource_name.replace(" ", "_")
+	var texture = load("res://assets/ui/resources/" + resource_name + ".png")
+	if texture:
+		resource_icon.texture = texture
+	else:
+		resource_icon.texture = null

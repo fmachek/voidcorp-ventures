@@ -2,9 +2,10 @@ extends MarginContainer
 class_name MarketResourceContainer
 
 
-@onready var resource_name_label: Label = $MarginContainer/ResourceNameLabel
+@onready var resource_name_label: Label = $MarginContainer/HBoxContainer/ResourceNameLabel
 @onready var resource_amount_label: Label = $MarginContainer/ResourceAmountLabel
 @onready var background: ColorRect = $BackgroundRect
+@onready var resource_texture_rect: TextureRect = $MarginContainer/HBoxContainer/ResourceTextureRect
 
 var resource: ResourceCurrency
 
@@ -17,6 +18,7 @@ func load_resource(resource: ResourceCurrency) -> void:
 	if not resource.is_connected("amount_changed", set_resource_amount):
 		resource.connect("amount_changed", set_resource_amount)
 	set_resource_amount(resource.amount)
+	load_texture()
 
 
 func set_resource_amount(resource_amount: int) -> void:
@@ -34,3 +36,12 @@ func _on_mouse_exited() -> void:
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		emit_signal("clicked", self)
+
+
+func load_texture() -> void:
+	var resource_name = resource.name.replace(" ", "_")
+	var texture = load("res://assets/ui/resources/" + resource_name + ".png")
+	if texture:
+		resource_texture_rect.texture = texture
+	else:
+		resource_texture_rect.texture = null

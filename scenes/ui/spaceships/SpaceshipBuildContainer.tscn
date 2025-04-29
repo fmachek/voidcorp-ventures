@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://druowug6eaq3a"]
 
-[ext_resource type="Texture2D" uid="uid://dm1230dc170fn" path="res://assets/sprites/spaceships/spaceship.png" id="1_166ab"]
+[ext_resource type="Texture2D" uid="uid://dtfvrpk067t2a" path="res://assets/sprites/spaceships/spaceship.png" id="1_166ab"]
 [ext_resource type="PackedScene" uid="uid://b8ji4mr6uh2rt" path="res://scenes/ui/buttons/MineBuildButton.tscn" id="2_87cnk"]
 [ext_resource type="Script" path="res://scripts/ui/buttons/spaceship_build_button.gd" id="3_tcibj"]
 

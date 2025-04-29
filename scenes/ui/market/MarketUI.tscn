@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://ehayd8qixqmn"]
+[gd_scene load_steps=13 format=3 uid="uid://ehayd8qixqmn"]
 
 [ext_resource type="Script" path="res://scripts/ui/market_ui.gd" id="1_q7q18"]
+[ext_resource type="Texture2D" uid="uid://bqdm53luetins" path="res://assets/sprites/background/background.png" id="2_6eixh"]
 [ext_resource type="StyleBox" uid="uid://cfb5convk7uqh" path="res://styleboxes/marketui/panel.tres" id="2_aoxyr"]
 [ext_resource type="PackedScene" uid="uid://dpdt1m1ad56dr" path="res://scenes/ui/buttons/CloseButton.tscn" id="2_xsrhx"]
+[ext_resource type="Texture2D" uid="uid://1qcrnnfvcp7r" path="res://assets/ui/buttons/menu/normal.png" id="5_670de"]
+[ext_resource type="Texture2D" uid="uid://bopm1pinucn22" path="res://assets/sprites/background/marketbg.png" id="5_wb5ta"]
+[ext_resource type="Texture2D" uid="uid://d37xujyl24uu2" path="res://assets/ui/buttons/menu/pressed.png" id="6_hea7w"]
+[ext_resource type="Texture2D" uid="uid://dnbibu4ds64vg" path="res://assets/ui/buttons/menu/hover.png" id="7_7sqx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hatt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj6i1"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0, 0, 0, 0.317647)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3teq"]
 
 [sub_resource type="Theme" id="Theme_7jhgq"]
 default_font_size = 12
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_6hatt")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_yj6i1")
+LineEdit/styles/read_only = SubResource("StyleBoxEmpty_l3teq")
 
 [node name="MarketUI" type="Control"]
 z_index = 300
@@ -18,15 +35,16 @@ grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_q7q18")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 mouse_force_pass_scroll_events = false
-color = Color(0.0117647, 0, 0.129412, 1)
+texture = ExtResource("2_6eixh")
 
 [node name="MainMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -51,7 +69,7 @@ columns = 2
 
 [node name="LeftPanel" type="PanelContainer" parent="MainMarginContainer/GridContainer"]
 clip_children = 2
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_force_pass_scroll_events = false
@@ -66,12 +84,18 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="RightPanel" type="PanelContainer" parent="MainMarginContainer/GridContainer"]
+clip_contents = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_force_pass_scroll_events = false
 theme_override_styles/panel = ExtResource("2_aoxyr")
+
+[node name="TextureRect" type="TextureRect" parent="MainMarginContainer/GridContainer/RightPanel"]
+layout_mode = 2
+texture = ExtResource("5_wb5ta")
+flip_h = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMarginContainer/GridContainer/RightPanel"]
 layout_mode = 2
@@ -82,7 +106,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 20
 
 [node name="TitleLabel" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer"]
 texture_filter = 2
@@ -91,7 +115,16 @@ theme_override_font_sizes/font_size = 12
 text = "Resource Market"
 horizontal_alignment = 1
 
-[node name="ResourceNameLabel" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer"]
+[node name="ResourceContainer" type="HBoxContainer" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResourceIcon" type="TextureRect" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="ResourceNameLabel" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceContainer"]
 texture_filter = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
@@ -109,24 +142,59 @@ layout_mode = 2
 
 [node name="SellSpinBox" type="SpinBox" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer"]
 texture_filter = 1
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
 theme = SubResource("Theme_7jhgq")
-update_on_text_changed = true
 
-[node name="SellButton" type="Button" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer"]
-texture_filter = 1
+[node name="MaxButton" type="TextureButton" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 24)
 layout_mode = 2
-focus_mode = 0
+mouse_force_pass_scroll_events = false
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_670de")
+texture_pressed = ExtResource("6_hea7w")
+texture_hover = ExtResource("7_7sqx0")
+
+[node name="Label" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/MaxButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Max"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellButton" type="TextureButton" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 24)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_670de")
+texture_pressed = ExtResource("6_hea7w")
+texture_hover = ExtResource("7_7sqx0")
+
+[node name="Label" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/SellButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "Sell"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseButton" parent="." instance=ExtResource("2_xsrhx")]
 z_index = 5
 layout_mode = 1
 mouse_force_pass_scroll_events = false
 
+[connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/MaxButton" to="." method="_on_max_button_pressed"]
 [connection signal="pressed" from="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/SellContainer/HBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

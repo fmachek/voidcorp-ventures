@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://3oul5x4r6x1l"]
+[gd_scene load_steps=3 format=3 uid="uid://3oul5x4r6x1l"]
 
 [ext_resource type="Script" path="res://scripts/ui/market/market_resource_container.gd" id="1_rbb7b"]
+[ext_resource type="Texture2D" uid="uid://dyftuugyurnlo" path="res://assets/ui/resources/atomsteel.png" id="2_claje"]
 
 [node name="MarketResourceContainer" type="MarginContainer"]
 custom_minimum_size = Vector2(0, 20)
@@ -23,12 +24,22 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 0
 
-[node name="ResourceNameLabel" type="Label" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ResourceTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_claje")
+stretch_mode = 5
+
+[node name="ResourceNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 texture_filter = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 6
 text = "<resource_name>"
+vertical_alignment = 1
 
 [node name="ResourceAmountLabel" type="Label" parent="MarginContainer"]
 texture_filter = 2
@@ -37,6 +48,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.621524, 0.621524, 0.621524, 1)
 theme_override_font_sizes/font_size = 6
 text = "<resource_amount>"
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
