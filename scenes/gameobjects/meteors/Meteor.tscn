@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjr2wrruivm7x"]
+[gd_scene load_steps=7 format=3 uid="uid://bjr2wrruivm7x"]
 
 [ext_resource type="Script" path="res://scripts/gameobjects/meteors/meteor.gd" id="1_jgsvn"]
-[ext_resource type="Texture2D" uid="uid://dwplp576e2jbi" path="res://assets/sprites/meteors/meteor.png" id="2_rtihh"]
-[ext_resource type="Texture2D" uid="uid://2jeseq1e4nkw" path="res://assets/particles/meteorparticle.png" id="5_gj3py"]
-[ext_resource type="AudioStream" uid="uid://ew35om2kqa87" path="res://assets/audio/effects/explosion.wav" id="8_qb41b"]
-[ext_resource type="Texture2D" uid="uid://cb2ssx8in82e4" path="res://assets/particles/explosionparticle.png" id="9_7j73o"]
+[ext_resource type="Texture2D" uid="uid://8br215umntkt" path="res://assets/sprites/meteors/meteor.png" id="2_rtihh"]
+[ext_resource type="AudioStream" uid="uid://bmy7wiplbapuk" path="res://assets/audio/effects/explosion.wav" id="8_qb41b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7no00"]
 radius = 6.0
@@ -41,24 +39,25 @@ stream = ExtResource("8_qb41b")
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 50
+amount = 25
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.25
-texture = ExtResource("9_7j73o")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
-initial_velocity_max = 75.0
-scale_amount_min = 2.0
-scale_amount_max = 3.0
+initial_velocity_max = 50.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_min = 10.0
+scale_amount_max = 12.0
 scale_amount_curve = SubResource("Curve_bisvk")
+color = Color(0.988235, 0.466667, 0.0117647, 1)
 
 [node name="MeteorParticles" type="CPUParticles2D" parent="."]
 amount = 50
 lifetime = 4.0
-texture = ExtResource("5_gj3py")
 emission_shape = 1
 emission_sphere_radius = 8.0
 spread = 20.0
@@ -67,8 +66,10 @@ initial_velocity_min = 10.0
 initial_velocity_max = 20.0
 angular_velocity_min = -100.0
 angular_velocity_max = 100.0
-scale_amount_min = 0.25
+scale_amount_min = 0.5
+scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_e8rud")
+color = Color(0.201527, 0.201527, 0.201527, 1)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
