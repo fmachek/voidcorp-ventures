@@ -39,9 +39,5 @@ func _gui_input(event):
 
 
 func load_texture() -> void:
-	var resource_name = resource.name.replace(" ", "_")
-	var texture = load("res://assets/ui/resources/" + resource_name + ".png")
-	if texture:
-		resource_texture_rect.texture = texture
-	else:
-		resource_texture_rect.texture = null
+	var texture: Texture2D = ResourceTextureLoader.get_resource_texture(resource.name)
+	resource_texture_rect.texture = texture

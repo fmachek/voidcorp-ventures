@@ -107,9 +107,5 @@ func _on_max_button_pressed() -> void:
 
 ## Loads a resource icon from the resources based on the resource name.
 func load_resource_icon(resource_name: String) -> void:
-	resource_name = resource_name.replace(" ", "_")
-	var texture = load("res://assets/ui/resources/" + resource_name + ".png")
-	if texture:
-		resource_icon.texture = texture
-	else:
-		resource_icon.texture = null
+	var texture: Texture2D = ResourceTextureLoader.get_resource_texture(resource_name)
+	resource_icon.texture = texture
