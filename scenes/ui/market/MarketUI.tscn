@@ -109,7 +109,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="TitleLabel" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Resource Market"
@@ -125,7 +125,7 @@ layout_mode = 2
 stretch_mode = 5
 
 [node name="ResourceNameLabel" type="Label" parent="MainMarginContainer/GridContainer/RightPanel/MarginContainer/VBoxContainer/ResourceContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "<resource_name> Price History"

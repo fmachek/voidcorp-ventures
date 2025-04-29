@@ -34,7 +34,7 @@ texture = ExtResource("2_claje")
 stretch_mode = 5
 
 [node name="ResourceNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 6
@@ -42,7 +42,7 @@ text = "<resource_name>"
 vertical_alignment = 1
 
 [node name="ResourceAmountLabel" type="Label" parent="MarginContainer"]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.621524, 0.621524, 0.621524, 1)
