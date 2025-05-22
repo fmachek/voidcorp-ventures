@@ -333,6 +333,7 @@ func mine_resources():
 	if resource2.amount > 0:
 		mined_resource2 = resource2.subtract(mines)
 		emit_signal('resource2_changed', resource2.amount)
+	emit_mine_particles()
 	return [mined_resource1, mined_resource2]
 
 
@@ -694,3 +695,9 @@ func focus_camera_on_planet() -> void:
 	camera.target = null
 	camera.zoom_in()
 	camera.global_position = global_position
+
+
+## Emits particles that indicate that resources have been mined.
+func emit_mine_particles() -> void:
+	var particles: CPUParticles2D = $MineParticles
+	particles.emitting = true
