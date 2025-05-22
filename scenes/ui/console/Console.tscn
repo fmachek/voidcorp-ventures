@@ -118,6 +118,27 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
 text = "Warnings"
 
+[node name="CloseButton" type="Button" parent="ConsoleContainer/SectionButtonContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6cnx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_axsa6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gfx2j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7x1qk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cs21r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wmgjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yx7fb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d76ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c25a8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
+text = "Hide"
+
 [node name="ConsoleScrollContainer" type="ScrollContainer" parent="ConsoleContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
@@ -146,9 +167,37 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="play_button_click_sound"]
+[node name="OpenButton" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 12)
+offset_top = 60.0
+offset_right = 28.0
+offset_bottom = 72.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.682353, 0.682353, 0.682353, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t6cnx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_axsa6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gfx2j")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7x1qk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cs21r")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wmgjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yx7fb")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_d76ow")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c25a8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
+text = "Show Console"
+
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="_on_all_button_pressed"]
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="play_button_click_sound"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="_on_info_button_pressed"]
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="play_button_click_sound"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="play_button_click_sound"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="_on_warning_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="play_button_click_sound"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/CloseButton" to="." method="_on_all_button_pressed"]
+[connection signal="pressed" from="OpenButton" to="." method="_on_open_button_pressed"]
+[connection signal="pressed" from="OpenButton" to="." method="_on_all_button_pressed"]

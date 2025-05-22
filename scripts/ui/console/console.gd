@@ -80,3 +80,13 @@ func scroll_to_bottom() -> void:
 
 func play_button_click_sound() -> void:
 	$"/root/Game/ButtonClickPlayer".play()
+
+
+func _on_open_button_pressed() -> void:
+	$ConsoleContainer.show()
+	$OpenButton.hide()
+
+
+func _on_close_button_pressed() -> void:
+	$ConsoleContainer.hide()
+	$OpenButton.show()
