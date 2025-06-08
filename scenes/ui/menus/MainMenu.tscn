@@ -92,7 +92,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 8
-text = "v1.1.0"
+text = "v1.1.1"
 
 [connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MenuContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]

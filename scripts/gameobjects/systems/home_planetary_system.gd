@@ -61,12 +61,14 @@ func handle_left_click() -> void:
 
 ## Nothing happens on mouse enter.
 func handle_mouse_enter() -> void:
-	pass
+	if not is_zoomed_in:
+		show_tooltip()
 
 
 ## Nothing happens on mouse exit.
 func handle_mouse_exit() -> void:
-	pass
+	if not is_zoomed_in:
+		hide_tooltip()
 
 
 ## Handles camera zoom in.

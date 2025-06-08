@@ -58,8 +58,8 @@ wait_time = 30.0
 
 [node name="HomeSystemSprite" type="Sprite2D" parent="."]
 z_index = 11
-position = Vector2(856, 144)
-scale = Vector2(16, 16)
+position = Vector2(500, 500)
+scale = Vector2(10, 10)
 texture = ExtResource("3_q6rhj")
 script = ExtResource("4_0hxbc")
 

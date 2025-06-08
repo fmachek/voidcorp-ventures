@@ -151,12 +151,16 @@ func start_unlocking() -> void:
 func handle_mouse_enter() -> void:
 	if not is_discovered and not is_zoomed_in and not is_unlocking:
 		set_selected_stylebox()
+	elif is_discovered and not is_zoomed_in:
+		show_tooltip()
 
 
 ## Handles mouse exit.
 func handle_mouse_exit() -> void:
 	if not is_discovered:
 		set_normal_stylebox()
+	elif is_discovered and not is_zoomed_in:
+		hide_tooltip()
 
 
 ## Sets the stylebox to normal.

@@ -5,10 +5,15 @@ class_name Inventory
 ## Array of resources.
 var inventory: Array[ResourceCurrency] = []
 
+## Amount of resources being held by the inventory.
+var resource_amount: int = 0
+
 ## Emitted when a new resource is added to the inventory.
 signal new_resource_added(resource: ResourceCurrency)
 ## Emitted when a resource is removed from the inventory.
 signal resource_removed(resource: ResourceCurrency)
+## Emitted when the amount of current resources changes.
+signal resource_amount_changed(new_amount: int)
 
 
 ## Returns a resource in the inventory with a given name.
@@ -30,6 +35,8 @@ func add_resource(resource: ResourceCurrency) -> void:
 		var new_resource: ResourceCurrency = ResourceCurrency.new(resource.name, resource.amount)
 		inventory.append(new_resource)
 		emit_signal("new_resource_added", new_resource)
+	resource_amount += resource.amount
+	emit_signal("resource_amount_changed", resource_amount)
 
 
 ## Removes a resource from the inventory.
@@ -65,6 +72,8 @@ func withdraw_resource(resource: ResourceCurrency, amount: int) -> void:
 	resource.subtract(amount)
 	if resource.amount == 0:
 		remove_resource(resource)
+	resource_amount -= resource.amount
+	emit_signal("resource_amount_changed", resource_amount)
 
 
 ## Empties the inventory.

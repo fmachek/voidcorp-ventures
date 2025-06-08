@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Voidcorp Ventures"
 config/description="A strategy/tycoon game set in space, where you work your way toward intergalactic travel."
-config/version="v1.1.0"
+config/version="v1.1.1"
 run/main_scene="res://scenes/Game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.0204414, 4.99357e-07, 0.194639, 1)

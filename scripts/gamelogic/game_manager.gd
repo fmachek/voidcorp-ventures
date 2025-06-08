@@ -144,6 +144,9 @@ func reset_game() -> void:
 	# Reset self
 	reset()
 	
+	# Reset camera
+	$"/root/Game/MainCamera".reset()
+	
 	# Pause the game and reset game pause manager
 	GamePauseManager.pause_game()
 	GamePauseManager.reset()
@@ -160,9 +163,6 @@ func reset_game() -> void:
 	PriceHistoryManager.reset()
 	# Reset win requirements
 	WinRequirementHandler.reset()
-	
-	# Reset camera
-	$"/root/Game/MainCamera".reset()
 	
 	# Reset soundtrack player
 	$"/root/Game/SoundtrackPlayer".reset()
@@ -217,11 +217,19 @@ func reset_ui() -> void:
 	ui_layer.add_child(spaceship_tooltip)
 	spaceship_tooltip.name = "SpaceshipTooltip"
 	
+	# Reset planetary system tooltip
+	ui_layer.get_node("SystemTooltip").name = "OldSystemTooltip"
+	ui_layer.get_node("OldSystemTooltip").queue_free()
+	var system_tooltip = load("res://scenes/ui/tooltips/SystemTooltip.tscn").instantiate()
+	ui_layer.add_child(system_tooltip)
+	system_tooltip.name = "SystemTooltip"
+	
 	# Change the order of the UI elements
 	ui_layer.move_child(game_ui, 0)
 	ui_layer.move_child(upgrade_ui, 1)
 	ui_layer.move_child(market_ui, 2)
 	ui_layer.move_child(spaceship_tooltip, 3)
+	ui_layer.move_child(system_tooltip, 4)
 	
 	var main_menu: MainMenu = ui_layer.get_node("MainMenu")
 	ui_layer.get_node("MainMenu").move_child(main_menu, 4)

@@ -97,6 +97,11 @@ signal production_resumed()
 ## Emitted when production downtime in seconds changed.
 signal downtime_passed(new_seconds: int)
 
+signal mine_built()
+signal mine_lost()
+signal factory_built()
+signal factory_lost()
+
 
 func _ready() -> void:
 	timer.connect('timeout', _on_timer_timeout)
@@ -219,6 +224,7 @@ func build_mine():
 		timer.start()
 		if can_mine_bonus_resources:
 			bonus_timer.start()
+	emit_signal("mine_built")
 	return mines
 
 ## Destroys a mine. If there are zero mines,
@@ -230,12 +236,14 @@ func destroy_mine():
 		timer.stop()
 		if can_mine_bonus_resources:
 			bonus_timer.stop()
+	emit_signal("mine_lost")
 	return mines
 
 
 ## Builds a new factory.
 func build_factory():
 	factories += 1
+	emit_signal("factory_built")
 	return factories
 
 
@@ -243,6 +251,7 @@ func build_factory():
 func destroy_factory():
 	if factories - 1 >= 0:
 		factories -= 1
+	emit_signal("factory_lost")
 	return factories
 
 
@@ -647,8 +656,8 @@ func calculate_gravitium_chance() -> float:
 ## Causes the planet to be lost, which destroys your mines, factories, spaceships
 ## and removes the boost zone. The player has to reclaim it.
 func lose_planet() -> void:
-	mines = 0
-	factories = 0
+	lose_all_mines()
+	lose_all_factories()
 	timer.paused = false
 	timer.stop()
 	bonus_timer.stop()
@@ -701,3 +710,15 @@ func focus_camera_on_planet() -> void:
 func emit_mine_particles() -> void:
 	var particles: CPUParticles2D = $MineParticles
 	particles.emitting = true
+
+
+func lose_all_mines() -> void:
+	for i in range(mines):
+		mines -= 1
+		emit_signal("mine_lost")
+
+
+func lose_all_factories() -> void:
+	for i in range(factories):
+		factories -= 1
+		emit_signal("factory_lost")

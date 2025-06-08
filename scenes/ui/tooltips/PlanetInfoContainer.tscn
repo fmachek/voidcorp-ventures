@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgei02ibk112j"]
+
+[ext_resource type="Texture2D" uid="uid://ceiakjh71fybh" path="res://assets/ui/systemindicators/owned.png" id="1_htdvh"]
+[ext_resource type="Script" path="res://scripts/ui/tooltips/planet_info_container.gd" id="1_xkntr"]
+
+[node name="PlanetInfoContainer" type="VBoxContainer"]
+theme_override_constants/separation = 5
+script = ExtResource("1_xkntr")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Indicator" type="TextureRect" parent="Header"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_htdvh")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Planet 1"
+vertical_alignment = 1
+
+[node name="ResourcesLabel" type="Label" parent="Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.603922, 0.603922, 1)
+theme_override_font_sizes/font_size = 4
+text = "100/100"
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="InfoContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MinesLabel" type="Label" parent="MarginContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.603922, 0.603922, 1)
+theme_override_font_sizes/font_size = 4
+text = "Mines: 0"
+
+[node name="FactoriesLabel" type="Label" parent="MarginContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.603922, 0.603922, 1)
+theme_override_font_sizes/font_size = 4
+text = "Factories: 0"
+
+[node name="SpaceshipsLabel" type="Label" parent="MarginContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.603922, 0.603922, 1)
+theme_override_font_sizes/font_size = 4
+text = "Spaceships: 0"
+
+[node name="ResourcesLabel" type="Label" parent="MarginContainer/InfoContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.603922, 0.603922, 0.603922, 1)
+theme_override_font_sizes/font_size = 4
+text = "Resources in storage: 30"

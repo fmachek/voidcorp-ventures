@@ -114,4 +114,5 @@ func zoom_background_in() -> void:
 func reset() -> void:
 	target = null
 	zoom = Vector2(1, 1)
+	emit_signal("zoom_changed", zoom.x)
 	zoom_background_in()

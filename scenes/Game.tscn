@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv7xghecno4bd"]
+[gd_scene load_steps=17 format=3 uid="uid://bv7xghecno4bd"]
 
 [ext_resource type="PackedScene" uid="uid://cx4ndlypfcu6e" path="res://scenes/ui/game/GameUI.tscn" id="2_rsrtc"]
 [ext_resource type="Script" path="res://scripts/main_camera.gd" id="3_khdbj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ehayd8qixqmn" path="res://scenes/ui/market/MarketUI.tscn" id="7_fd8hf"]
 [ext_resource type="Texture2D" uid="uid://bqdm53luetins" path="res://assets/sprites/background/background.png" id="8_3xqil"]
 [ext_resource type="PackedScene" uid="uid://jyx53ynrjdkv" path="res://scenes/ui/menus/MainMenu.tscn" id="8_tgvop"]
+[ext_resource type="PackedScene" uid="uid://cvabydby122be" path="res://scenes/ui/tooltips/SystemTooltip.tscn" id="8_udh4l"]
 [ext_resource type="PackedScene" uid="uid://csym5wsfd233l" path="res://scenes/ui/menus/SettingsMenu.tscn" id="9_rf6kf"]
 [ext_resource type="PackedScene" uid="uid://b3x07cjbctymn" path="res://scenes/ui/tooltips/SpaceshipTooltip.tscn" id="9_so2wl"]
 [ext_resource type="Texture2D" uid="uid://kncr2jxt3ccu" path="res://assets/sprites/background/stars.png" id="10_igm0i"]
@@ -34,6 +35,9 @@ visible = false
 z_as_relative = false
 
 [node name="SpaceshipTooltip" parent="UILayer" instance=ExtResource("9_so2wl")]
+visible = false
+
+[node name="SystemTooltip" parent="UILayer" instance=ExtResource("8_udh4l")]
 visible = false
 
 [node name="MainMenu" parent="UILayer" instance=ExtResource("8_tgvop")]

@@ -170,6 +170,7 @@ size_flags_horizontal = 3
 [node name="OpenButton" type="Button" parent="."]
 visible = false
 custom_minimum_size = Vector2(0, 12)
+layout_mode = 0
 offset_top = 60.0
 offset_right = 28.0
 offset_bottom = 72.0
@@ -191,12 +192,12 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ynug6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hh53c")
 text = "Show Console"
 
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="_on_all_button_pressed"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="play_button_click_sound"]
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/AllButton" to="." method="_on_all_button_pressed"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="play_button_click_sound"]
-[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="_on_warning_button_pressed"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="play_button_click_sound"]
+[connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/WarningButton" to="." method="_on_warning_button_pressed"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ConsoleContainer/SectionButtonContainer/CloseButton" to="." method="_on_all_button_pressed"]
 [connection signal="pressed" from="OpenButton" to="." method="_on_open_button_pressed"]

@@ -180,6 +180,10 @@ func zoom_in():
 		center_light.enabled = true
 	for planet in planet_nodes:
 		planet.visible = true
+	
+	var highlight = center.get_node("Highlight")
+	if highlight:
+		highlight.scale = Vector2(1, 1)
 
 
 ## Handles zoom out for clarity.
@@ -190,3 +194,32 @@ func zoom_out():
 		center_light.enabled = false
 	for planet in planet_nodes:
 		planet.visible = false
+	
+	var highlight = center.get_node("Highlight")
+	if highlight:
+		highlight.scale = Vector2(10, 10)
+
+
+## Shows the planetary system tooltip.
+func show_tooltip() -> void:
+	var tooltip: SystemTooltip = $"/root/Game/UILayer/SystemTooltip"
+	tooltip.show()
+	tooltip.load_system(self)
+	
+	if center:
+		if center is Star:
+			var highlight = center.get_node("Highlight")
+			if highlight:
+				highlight.show()
+
+
+## Hides the planetary system tooltip.
+func hide_tooltip() -> void:
+	var tooltip: SystemTooltip = $"/root/Game/UILayer/SystemTooltip"
+	if tooltip.current_system == self:
+		tooltip.hide()
+	
+	if center:
+		var highlight = center.get_node("Highlight")
+		if highlight:
+			highlight.hide()
