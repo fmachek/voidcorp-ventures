@@ -6,14 +6,19 @@ extends Node
 var upgrades = {}
 ## Amount of unlocked upgrades.
 var unlocked_upgrades: int = 0
+## Crew ships unlocked (yes/no).
+var are_crew_ships_unlocked := false
 
 ## This signal is emitted when the amount of unlocked upgrades changes.
 signal upgrade_amount_changed(new_amount: int)
+## Emitted when crew ships are unlocked.
+signal unlocked_crew_ships()
 
 
 ## Loads all upgrades when ready.
 func _ready() -> void:
 	reset()
+	GameManager.connect("planets_owned_changed", _on_planets_owned_changed)
 
 
 ## Attempts to unlock the upgrade with the given id. The prerequisite is also checked.
@@ -189,6 +194,18 @@ func increase_unlocked_upgrades_amount() -> void:
 ## Resets some variables to their original state.
 func reset() -> void:
 	unlocked_upgrades = 0
+	are_crew_ships_unlocked = false
 	
 	upgrades.clear()
 	load_upgrades()
+
+
+func unlock_crew_ships() -> void:
+	if not are_crew_ships_unlocked:
+		are_crew_ships_unlocked = true
+		emit_signal("unlocked_crew_ships")
+
+
+func _on_planets_owned_changed(new_amount: int) -> void:
+	if new_amount >= 3:
+		unlock_crew_ships()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6xdi15snkvgw"]
+[gd_scene load_steps=21 format=3 uid="uid://c6xdi15snkvgw"]
 
 [ext_resource type="Script" path="res://scripts/ui/planet_ui.gd" id="1_23ccb"]
 [ext_resource type="PackedScene" uid="uid://dx3saw32fyv5t" path="res://scenes/ui/misc/ResourceGridContainer.tscn" id="2_mykgm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cjbg7vc7shqwg" path="res://assets/ui/buttons/buildcrew/normal/normal.png" id="9_jnxm0"]
 [ext_resource type="Texture2D" uid="uid://c1ikf4n4njsco" path="res://assets/ui/buttons/buildcrew/normal/pressed.png" id="10_lfkqp"]
 [ext_resource type="Texture2D" uid="uid://r1mkohvhqqff" path="res://assets/ui/buttons/buildcrew/normal/hover.png" id="11_71e2e"]
+[ext_resource type="Script" path="res://scripts/ui/crew_ship_unlock_container.gd" id="13_8i4cq"]
 [ext_resource type="Texture2D" uid="uid://bfg0n0u8gv22a" path="res://assets/ui/buttons/buy/red/normal.png" id="13_243ha"]
 [ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="13_iy51q"]
 [ext_resource type="Texture2D" uid="uid://6ucex6xk05la" path="res://assets/ui/buttons/buy/red/pressed.png" id="14_87l7p"]
@@ -177,6 +178,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SendCrewButton" type="TextureButton" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -201,6 +203,21 @@ theme_override_font_sizes/font_size = 6
 text = "Send Meteor Crew ($500)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CrewShipUnlockContainer" type="MarginContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("13_8i4cq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/CrewShipUnlockContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/BuildContainer/CrewShipUnlockContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Claim 3 planets to unlock meteor crew ships (0/3)"
+autowrap_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2

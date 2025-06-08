@@ -12,6 +12,7 @@ func _ready() -> void:
 	InputModeHandler.connect("no_money_for_crew", show_error_message)
 	InputModeHandler.connect("input_mode_changed", _on_input_mode_changed)
 	GameManager.connect("money_changed", _on_money_changed)
+	UpgradeManager.connect("unlocked_crew_ships", show)
 
 
 func _on_pressed() -> void:
