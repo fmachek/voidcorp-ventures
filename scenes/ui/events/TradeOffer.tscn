@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmjmwhkf2oi20"]
+
+[ext_resource type="Texture2D" uid="uid://daug7pilf6ten" path="res://assets/ui/resources/ashium_ore.png" id="1_hyam7"]
+[ext_resource type="Script" path="res://scripts/ui/events/trade_offer.gd" id="1_v12ej"]
+[ext_resource type="Texture2D" uid="uid://vu7eango1l6" path="res://assets/ui/resources/flamesteel.png" id="2_12su8"]
+
+[node name="TradeOffer" type="ColorRect"]
+z_index = 10
+offset_right = 143.0
+offset_bottom = 52.0
+color = Color(0, 0, 0, 0.678431)
+script = ExtResource("1_v12ej")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 52.0
+theme_override_constants/margin_top = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Trade Offer"
+horizontal_alignment = 1
+
+[node name="TradeOfferContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResourceTexture1" type="TextureRect" parent="MarginContainer/VBoxContainer/TradeOfferContainer"]
+layout_mode = 2
+texture = ExtResource("1_hyam7")
+
+[node name="ResourceLabel1" type="Label" parent="MarginContainer/VBoxContainer/TradeOfferContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 8
+text = "6"
+
+[node name="ArrowLabel" type="Label" parent="MarginContainer/VBoxContainer/TradeOfferContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "→"
+
+[node name="ResourceTexture2" type="TextureRect" parent="MarginContainer/VBoxContainer/TradeOfferContainer"]
+layout_mode = 2
+texture = ExtResource("2_12su8")
+
+[node name="ResourceLabel2" type="Label" parent="MarginContainer/VBoxContainer/TradeOfferContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "3"
+
+[node name="Options" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DeclineLabel" type="Label" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.794399, 3.22476e-06, 9.62615e-07, 1)
+theme_override_font_sizes/font_size = 6
+text = "Decline (Q)"
+
+[node name="AcceptLabel" type="Label" parent="MarginContainer/VBoxContainer/Options"]
+layout_mode = 2
+theme_override_colors/font_color = Color(6.01634e-07, 0.710683, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "Accept (E)"

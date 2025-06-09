@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvns2hf3lirux"]
+[gd_scene load_steps=12 format=3 uid="uid://bvns2hf3lirux"]
 
 [ext_resource type="Script" path="res://scripts/gameobjects/systems/home_planetary_system.gd" id="1_08usa"]
 [ext_resource type="PackedScene" uid="uid://beqbst3q6fars" path="res://scenes/gameobjects/meteors/MeteorSpawner.tscn" id="2_dtcgx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3510tvl3m1nc" path="res://assets/sprites/planets/homeplaneticon.png" id="3_q6rhj"]
 [ext_resource type="StyleBox" uid="uid://qg28xlo534vi" path="res://styleboxes/general/progress_bar_bg.tres" id="3_quhin"]
 [ext_resource type="Script" path="res://scripts/misc/home_system_sprite.gd" id="4_0hxbc"]
+[ext_resource type="Script" path="res://scripts/gameobjects/events/trader_spaceship_spawner.gd" id="4_5xdek"]
 [ext_resource type="PackedScene" uid="uid://bw0iwyxhorfjc" path="res://scenes/ui/systems/PlanetIndicatorPanel.tscn" id="4_7rlj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncppo"]
@@ -55,6 +56,12 @@ planets_node = NodePath("../Planets")
 
 [node name="Timer" type="Timer" parent="SpaceshipRepairSpawner"]
 wait_time = 30.0
+
+[node name="TraderSpaceshipSpawner" type="Node2D" parent="."]
+script = ExtResource("4_5xdek")
+
+[node name="SpawnTimer" type="Timer" parent="TraderSpaceshipSpawner"]
+wait_time = 120.0
 
 [node name="HomeSystemSprite" type="Sprite2D" parent="."]
 z_index = 11
@@ -113,3 +120,4 @@ mouse_filter = 2
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpaceshipRepairSpawner/Timer" to="SpaceshipRepairSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="TraderSpaceshipSpawner/SpawnTimer" to="TraderSpaceshipSpawner" method="spawn_trader_spaceship"]

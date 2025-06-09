@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cww2kvx87g2ab"]
+
+[ext_resource type="Script" path="res://scripts/gameobjects/events/trader_spaceship.gd" id="1_fr5a0"]
+[ext_resource type="Texture2D" uid="uid://daug7pilf6ten" path="res://assets/ui/resources/ashium_ore.png" id="2_f0p33"]
+[ext_resource type="Script" path="res://scenes/gameobjects/events/trade_success_particles.gd" id="3_rgjhm"]
+[ext_resource type="Texture2D" uid="uid://brjcwbjgwnbm7" path="res://assets/sprites/traderspaceship/traderhighlight.png" id="3_vtsoh"]
+[ext_resource type="AudioStream" uid="uid://cdwtfb8y8uwds" path="res://assets/audio/effects/trader_notification.wav" id="6_hol0r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hyw3q"]
+load_path = "res://.godot/imported/traderspaceship.png-7cbb825642afa92442ceb061a19029d1.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30lrl"]
+size = Vector2(32, 17)
+
+[sub_resource type="Gradient" id="Gradient_ee53a"]
+offsets = PackedFloat32Array(0, 0.873626, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="TraderSpaceship" type="Node2D"]
+z_index = 6
+script = ExtResource("1_fr5a0")
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_hyw3q")
+
+[node name="HighlightSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_vtsoh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_30lrl")
+
+[node name="SuccessParticles" type="CPUParticles2D" parent="."]
+z_index = 9
+emitting = false
+amount = 5
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+texture = ExtResource("2_f0p33")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+angular_velocity_max = 20.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_min = 15.0
+damping_max = 15.0
+color_ramp = SubResource("Gradient_ee53a")
+script = ExtResource("3_rgjhm")
+
+[node name="ReturnTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="NotificationSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hol0r")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="ReturnTimer" to="." method="leave"]
