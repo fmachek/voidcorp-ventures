@@ -183,6 +183,17 @@ func load_upgrades() -> void:
 	upgrades[24] = planet_row2_upgrade3
 	var planet_row2_upgrade4 = Upgrade.new(25, 'Improved Scanning III', planet_row2_upgrade3, [1000, ResourceCurrency.new('Gravitium', 5)], "Increases the chance to find Gravitium by 0.5%.")
 	upgrades[25] = planet_row2_upgrade4
+	
+	# Allow trader spaceships to arrive
+	var event_row1_upgrade1 = Upgrade.new(26, 'Advertising I', null, [2500], "Advertise your company and attract traders who may have interesting offers for you.")
+	upgrades[26] = event_row1_upgrade1
+	# Make trader spaceships arrive more often
+	var event_row1_upgrade2 = Upgrade.new(27, 'Advertising II', event_row1_upgrade1, [2500], "Advertise even more and attract traders more often.")
+	upgrades[27] = event_row1_upgrade2
+	# Make trader spaceships arrive more often
+	var event_row1_upgrade3 = Upgrade.new(28, 'Advertising III', event_row1_upgrade2, [2500], "Advertise even more and attract traders more often.")
+	upgrades[28] = event_row1_upgrade3
+	
 
 
 ## Increases the amount of unlocked upgrades by 1.

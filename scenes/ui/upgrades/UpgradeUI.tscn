@@ -429,6 +429,46 @@ layout_mode = 2
 upgrade_id = 25
 tooltip = NodePath("../../../../../../../UpgradeTooltip")
 
+[node name="UpgradeTrack5" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NameLabel" type="Label" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5"]
+texture_filter = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Events"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UpgradeButton" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 26
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton")
+
+[node name="UpgradeButton2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 27
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
+[node name="UpgradeConnection2" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5/UpgradeRow" node_paths=PackedStringArray("upgrade_button") instance=ExtResource("3_oo27c")]
+layout_mode = 2
+upgrade_button = NodePath("../UpgradeButton2")
+
+[node name="UpgradeButton3" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer/UpgradeTrack5/UpgradeRow" node_paths=PackedStringArray("tooltip") instance=ExtResource("3_ybmuu")]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+upgrade_id = 28
+tooltip = NodePath("../../../../../../../UpgradeTooltip")
+
 [node name="FinalUpgradeSection" parent="TextureRect/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_8k5ov")]
 layout_mode = 2
 

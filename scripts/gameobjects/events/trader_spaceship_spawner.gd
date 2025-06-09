@@ -2,14 +2,21 @@ class_name TraderSpaceshipSpawner
 extends Node2D
 
 
-## Starts spawning when it enters the scene tree.
+## Connects upgrade signals.
 func _ready() -> void:
-	start_spawning()
+	UpgradeManager.upgrades[26].connect("unlocked", start_spawning)
+	UpgradeManager.upgrades[27].connect("unlocked", decrease_wait_time)
+	UpgradeManager.upgrades[28].connect("unlocked", decrease_wait_time)
 
 
 ## Starts spawning trader spaceships.
 func start_spawning() -> void:
 	$SpawnTimer.start()
+
+
+## Decreases the time between spawns.
+func decrease_wait_time() -> void:
+	$SpawnTimer.wait_time -= 30
 
 
 ## Spawns a trader spaceship at one of the home system corners. The spaceship flies
