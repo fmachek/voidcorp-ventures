@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/gameobjects/events/trader_spaceship.gd" id="1_fr5a0"]
 [ext_resource type="Texture2D" uid="uid://daug7pilf6ten" path="res://assets/ui/resources/ashium_ore.png" id="2_f0p33"]
-[ext_resource type="Script" path="res://scenes/gameobjects/events/trade_success_particles.gd" id="3_rgjhm"]
+[ext_resource type="Texture2D" uid="uid://b3o378hwkbqvp" path="res://assets/sprites/traderspaceship/trader_spaceship_gray.png" id="2_tl2h2"]
+[ext_resource type="Script" path="res://scripts/ui/events/trade_success_particles.gd" id="3_rgjhm"]
 [ext_resource type="Texture2D" uid="uid://brjcwbjgwnbm7" path="res://assets/sprites/traderspaceship/traderhighlight.png" id="3_vtsoh"]
 [ext_resource type="AudioStream" uid="uid://cdwtfb8y8uwds" path="res://assets/audio/effects/trader_notification.wav" id="6_hol0r"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hyw3q"]
-load_path = "res://.godot/imported/traderspaceship.png-7cbb825642afa92442ceb061a19029d1.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30lrl"]
 size = Vector2(32, 17)
@@ -21,7 +19,7 @@ z_index = 6
 script = ExtResource("1_fr5a0")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
-texture = SubResource("CompressedTexture2D_hyw3q")
+texture = ExtResource("2_tl2h2")
 
 [node name="HighlightSprite" type="Sprite2D" parent="."]
 visible = false
