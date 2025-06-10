@@ -183,12 +183,13 @@ func upgrade_durability() -> void:
 	durability_loss -= 15
 
 
-## Destroys the spaceship. Spaceship scraps are spawned as a visual effect.
+## Destroys the spaceship. Spaceship scraps are spawned as a visual effect (if it isn't on a planet).
 func destroy():
-	var spaceship_scraps_scene = load("res://scenes/gameobjects/spaceships/SpaceshipScraps.tscn")
-	var spaceship_scraps = spaceship_scraps_scene.instantiate()
-	spaceship_scraps.position = global_position
-	$"/root/Game/Level".add_child(spaceship_scraps)
+	if current_planet == null:
+		var spaceship_scraps_scene = load("res://scenes/gameobjects/spaceships/SpaceshipScraps.tscn")
+		var spaceship_scraps = spaceship_scraps_scene.instantiate()
+		spaceship_scraps.position = global_position
+		$"/root/Game/Level".add_child(spaceship_scraps)
 	emit_signal("destroyed")
 	queue_free()
 
