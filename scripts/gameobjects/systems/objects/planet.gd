@@ -449,6 +449,7 @@ func land_spaceship(spaceship: Spaceship) -> void:
 		GameManager.planet_claimed()
 		ConsoleMessageManager.add_info_message("You have claimed planet " + planet_name + ".")
 		$ClaimParticles.emitting = true
+		$ClaimSoundPlayer.play()
 		
 		emit_signal('claimed')
 
@@ -678,6 +679,7 @@ func lose_planet() -> void:
 	GameManager.planet_lost()
 	ConsoleMessageManager.add_warning_message("You have lost planet " + planet_name + ".", focus_camera_on_planet)
 	$LossParticles.emitting = true
+	$LossSoundPlayer.play()
 	emit_signal("lost")
 	
 	if is_home_planet: # Lose the game if the home planet is lost.
