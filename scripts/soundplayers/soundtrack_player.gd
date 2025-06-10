@@ -56,6 +56,7 @@ func reset() -> void:
 	started = false
 	stop()
 	stream = null
+	soundtracks.shuffle()
 	GamePauseManager.connect("game_resumed", _handle_game_resumed)
 
 
