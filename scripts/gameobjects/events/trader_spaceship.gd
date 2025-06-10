@@ -77,6 +77,7 @@ func leave() -> void:
 	returning = true
 	is_offer_active = false
 	return_timer.stop()
+	$HighlightSprite.hide() # Hide the highlight when leaving
 	fly_to(original_pos)
 
 
